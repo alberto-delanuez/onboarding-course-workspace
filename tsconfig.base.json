@@ -1,0 +1,60 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true,
+    "importHelpers": true,
+    "isolatedModules": true,
+    "lib": ["es2022"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "noEmitOnError": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "es2022",
+    "customConditions": ["development"],
+    "baseUrl": ".",
+    "paths": {
+      "@onboarding-course/customer-auth-application": [
+        "libs/customer/auth/application/src/index.ts"
+      ],
+      "@onboarding-course/customer-auth-domain": [
+        "libs/customer/auth/domain/src/index.ts"
+      ],
+      "@onboarding-course/customer-auth-infrastructure": [
+        "libs/customer/auth/infrastructure/src/index.ts"
+      ],
+      "@onboarding-course/customer-auth-ui": [
+        "libs/customer/auth/ui/src/index.ts"
+      ],
+      "@onboarding-course/customer-common-ui": [
+        "libs/customer/common/ui/src/index.ts"
+      ],
+      "@onboarding-course/customer-profile-application": [
+        "libs/customer/profile/application/src/index.ts"
+      ],
+      "@onboarding-course/customer-profile-domain": [
+        "libs/customer/profile/domain/src/index.ts"
+      ],
+      "@onboarding-course/customer-profile-infrastructure": [
+        "libs/customer/profile/infrastructure/src/index.ts"
+      ],
+      "@onboarding-course/customer-profile-ui": [
+        "libs/customer/profile/ui/src/index.ts"
+      ],
+      "@onboarding-course/customer-themes-base": [
+        "libs/customer/themes/base/src/index.ts"
+      ],
+      "@onboarding-course/customer-themes-blue": [
+        "libs/customer/themes/blue/src/index.ts"
+      ],
+      "@onboarding-course/customer-themes-purple": [
+        "libs/customer/themes/purple/src/index.ts"
+      ]
+    }
+  }
+}
