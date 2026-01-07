@@ -1,0 +1,25 @@
+{
+    "files": [],
+    "include": [],
+    "references": [
+        {
+            "path": "../../common/utils"
+        },
+        {
+            "path": "../../common/di"
+        },
+        {
+            "path": "../domain"
+        },
+        {
+            "path": "../application"
+        },
+        {
+            "path": "./tsconfig.lib.json"
+        },
+        {
+            "path": "./tsconfig.spec.json"
+        }
+    ],
+    "extends": "../../../../tsconfig.base.json"
+}
