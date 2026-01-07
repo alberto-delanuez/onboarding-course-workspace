@@ -1,0 +1,38 @@
+{
+    "extends": "../../../../tsconfig.base.json",
+    "compilerOptions": {
+        "outDir": "dist",
+        "types": [
+            "node",
+            "@nx/react/typings/cssmodule.d.ts",
+            "@nx/react/typings/image.d.ts",
+            "vite/client"
+        ],
+        "jsx": "react-jsx",
+        "tsBuildInfoFile": "dist/tsconfig.lib.tsbuildinfo"
+    },
+    "exclude": [
+        "out-tsc",
+        "dist",
+        "**/*.spec.ts",
+        "**/*.test.ts",
+        "vite.config.ts",
+        "vitest.config.ts",
+        "eslint.config.mjs"
+    ],
+    "include": ["src/**/*.ts"],
+    "references": [
+        {
+            "path": "../../profile/application/tsconfig.lib.json"
+        },
+        {
+            "path": "../../profile/domain/tsconfig.lib.json"
+        },
+        {
+            "path": "../../auth/application/tsconfig.lib.json"
+        },
+        {
+            "path": "../../auth/domain/tsconfig.lib.json"
+        }
+    ]
+}

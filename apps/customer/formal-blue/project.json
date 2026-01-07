@@ -1,0 +1,29 @@
+{
+  "name": "@onboarding-course/formal-blue",
+  "targets": {
+    "pre-commit": {},
+    "generate-version": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tools/scripts/generate-version.sh formal-blue dist/apps/customer/formal-blue"
+      }
+    },
+    "build": {
+      "executor": "@nx/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "dependsOn": ["generate-version"],
+      "options": {
+        "outputPath": "dist/apps/customer/formal-blue"
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production"
+        }
+      }
+    }
+  }
+}

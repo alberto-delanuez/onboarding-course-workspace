@@ -1,0 +1,6 @@
+{
+  "name": "@onboarding-course/customer-profile-application",
+  "targets": {
+    "pre-commit": {}
+  }
+}
