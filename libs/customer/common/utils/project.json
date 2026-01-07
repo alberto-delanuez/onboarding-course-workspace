@@ -1,0 +1,6 @@
+{
+  "name": "@onboarding-course/customer-common-utils",
+  "targets": {
+    "pre-commit": {}
+  }
+}

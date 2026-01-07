@@ -1,0 +1,6 @@
+{
+  "name": "@onboarding-course/customer-auth-domain",
+  "targets": {
+    "pre-commit": {}
+  }
+}
