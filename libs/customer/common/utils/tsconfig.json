@@ -1,0 +1,28 @@
+{
+    "files": [],
+    "include": [],
+    "references": [
+        {
+            "path": "../../profile/infrastructure"
+        },
+        {
+            "path": "../../profile/application"
+        },
+        {
+            "path": "../../auth/infrastructure"
+        },
+        {
+            "path": "../../auth/application"
+        },
+        {
+            "path": "../di"
+        },
+        {
+            "path": "./tsconfig.lib.json"
+        },
+        {
+            "path": "./tsconfig.spec.json"
+        }
+    ],
+    "extends": "../../../../tsconfig.base.json"
+}

@@ -1,0 +1,6 @@
+{
+  "name": "@onboarding-course/customer-themes-base",
+  "targets": {
+    "pre-commit": {}
+  }
+}
