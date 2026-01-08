@@ -8,6 +8,27 @@
     },
     {
       "path": "./apps/customer/formal-blue"
+    },
+    {
+      "path": "./libs/customer/auth/domain"
+    },
+    {
+      "path": "./libs/customer/auth/application"
+    },
+    {
+      "path": "./libs/customer/auth/infrastructure"
+    },
+    {
+      "path": "./libs/customer/auth/ui"
+    },
+    {
+      "path": "./libs/customer/themes/base"
+    },
+    {
+      "path": "./libs/customer/themes/green"
+    },
+    {
+      "path": "./libs/customer/themes/blue"
     }
   ]
 }
