@@ -19,6 +19,33 @@
     "customConditions": ["development"],
     "baseUrl": ".",
     "paths": {
+      "@onboarding-course/customer-auth-application": [
+        "libs/customer/auth/application/src/index.ts"
+      ],
+      "@onboarding-course/customer-auth-domain": [
+        "libs/customer/auth/domain/src/index.ts"
+      ],
+      "@onboarding-course/customer-auth-infrastructure": [
+        "libs/customer/auth/infrastructure/src/index.ts"
+      ],
+      "@onboarding-course/customer-auth-ui": [
+        "libs/customer/auth/ui/src/index.ts"
+      ],
+      "@onboarding-course/customer-common-ui": [
+        "libs/customer/common/ui/src/index.ts"
+      ],
+      "@onboarding-course/customer-profile-application": [
+        "libs/customer/profile/application/src/index.ts"
+      ],
+      "@onboarding-course/customer-profile-domain": [
+        "libs/customer/profile/domain/src/index.ts"
+      ],
+      "@onboarding-course/customer-profile-infrastructure": [
+        "libs/customer/profile/infrastructure/src/index.ts"
+      ],
+      "@onboarding-course/customer-profile-ui": [
+        "libs/customer/profile/ui/src/index.ts"
+      ],
       "@onboarding-course/customer-themes-base": [
         "libs/customer/themes/base/src/index.ts"
       ],

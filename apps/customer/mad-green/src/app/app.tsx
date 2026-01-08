@@ -3,13 +3,12 @@
 import {
   ThemeProvider,
   CssBaseline,
-  Button,
   Container,
   Typography,
-  Box,
-  Card,
-  CardContent,
+  Box
 } from '@mui/material';
+import { LoginContainer } from '@onboarding-course/customer-auth-ui';
+import { Link } from 'react-router-dom';
 import { greenTheme } from '@onboarding-course/customer-themes-green';
 
 export function App() {
@@ -21,22 +20,7 @@ export function App() {
           <Typography variant="h4" component="h1" gutterBottom color="primary">
             Mad Green Application
           </Typography>
-          <Card sx={{ mb: 2, maxWidth: 345 }}>
-            <CardContent>
-              <Typography variant="h5" component="div">
-                Fresh & Modern
-              </Typography>
-              <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                adjective
-              </Typography>
-              <Typography variant="body2">
-                New and interesting; innovative.
-              </Typography>
-            </CardContent>
-          </Card>
-          <Button variant="contained" color="secondary">
-            Modern Action
-          </Button>
+          <LoginContainer />
         </Box>
       </Container>
     </ThemeProvider>

@@ -29,6 +29,21 @@
     },
     {
       "path": "./libs/customer/themes/blue"
+    },
+    {
+      "path": "./libs/customer/profile/domain"
+    },
+    {
+      "path": "./libs/customer/profile/application"
+    },
+    {
+      "path": "./libs/customer/profile/ui"
+    },
+    {
+      "path": "./libs/customer/profile/infrastructure"
+    },
+    {
+      "path": "./libs/customer/common/ui"
     }
   ]
 }

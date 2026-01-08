@@ -4,3 +4,6 @@ packages:
   - 'apps/customer/*'
   - 'libs/customer/auth/*'
   - 'libs/customer/themes/*'
+  - 'libs/customer/profile/*'
+  - 'lib/customer/common/*'
+  - 'libs/customer/common/*'

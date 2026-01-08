@@ -1,1 +1,1 @@
-export * from './lib/customer-auth-infrastructure';
+export * from './lib/repositories/auth.http.repository';

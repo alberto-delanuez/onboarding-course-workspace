@@ -9,6 +9,8 @@ import {
   Box,
 } from '@mui/material';
 import { blueTheme } from '@onboarding-course/customer-themes-blue';
+import { LoginContainer } from '@onboarding-course/customer-auth-ui';
+import { Link } from 'react-router-dom';
 
 export function App() {
   return (
@@ -19,9 +21,7 @@ export function App() {
           <Typography variant="h4" component="h1" gutterBottom>
             Formal Blue Application
           </Typography>
-          <Button variant="contained" color="primary">
-            Professional Action
-          </Button>
+          <LoginContainer />
         </Box>
       </Container>
     </ThemeProvider>

@@ -24,6 +24,26 @@ export default defineConfig(() => ({
         __dirname,
         '../../../libs/customer/themes/base/src/index.ts'
       ),
+      '@onboarding-course/customer-auth-ui': resolve(
+        __dirname,
+        '../../../libs/customer/auth/ui/src/index.ts'
+      ),
+      '@onboarding-course/customer-auth-domain': resolve(
+        __dirname,
+        '../../../libs/customer/auth/domain/src/index.ts'
+      ),
+      '@onboarding-course/customer-auth-infrastructure': resolve(
+        __dirname,
+        '../../../libs/customer/auth/infrastructure/src/index.ts'
+      ),
+      '@onboarding-course/customer-auth-application': resolve(
+        __dirname,
+        '../../../libs/customer/auth/application/src/index.ts'
+      ),
+      '@onboarding-course/customer-common-ui': resolve(
+        __dirname,
+        '../../../libs/customer/common/ui/src/index.ts'
+      ),
     },
   },
   plugins: [react()],

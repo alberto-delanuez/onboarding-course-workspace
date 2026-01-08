@@ -7,6 +7,22 @@ import * as path from 'path';
 export default defineConfig(() => ({
   root: __dirname,
   cacheDir: '../../../../node_modules/.vite/libs/customer/auth/ui',
+  resolve: {
+    alias: {
+      '@onboarding-course/customer-auth-domain': path.resolve(
+        __dirname,
+        '../domain/src/index.ts'
+      ),
+      '@onboarding-course/customer-auth-application': path.resolve(
+        __dirname,
+        '../application/src/index.ts'
+      ),
+      '@onboarding-course/customer-auth-infrastructure': path.resolve(
+        __dirname,
+        '../infrastructure/src/index.ts'
+      ),
+    },
+  },
   plugins: [
     react(),
     dts({
