@@ -16,6 +16,18 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "es2022",
-    "customConditions": ["development"]
+    "customConditions": ["development"],
+    "baseUrl": ".",
+    "paths": {
+      "@onboarding-course/customer-themes-base": [
+        "libs/customer/themes/base/src/index.ts"
+      ],
+      "@onboarding-course/customer-themes-blue": [
+        "libs/customer/themes/blue/src/index.ts"
+      ],
+      "@onboarding-course/customer-themes-green": [
+        "libs/customer/themes/green/src/index.ts"
+      ]
+    }
   }
 }

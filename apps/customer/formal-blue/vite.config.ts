@@ -1,6 +1,7 @@
 /// <reference types='vitest' />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { resolve } from 'path';
 
 export default defineConfig(() => ({
   root: __dirname,
@@ -12,6 +13,18 @@ export default defineConfig(() => ({
   preview: {
     port: 4200,
     host: 'localhost',
+  },
+    resolve: {
+    alias: {
+      '@onboarding-course/customer-themes-blue': resolve(
+        __dirname,
+        '../../../libs/customer/themes/blue/src/index.ts'
+      ),
+      '@onboarding-course/customer-themes-base': resolve(
+        __dirname,
+        '../../../libs/customer/themes/base/src/index.ts'
+      ),
+    },
   },
   plugins: [react()],
   build: {

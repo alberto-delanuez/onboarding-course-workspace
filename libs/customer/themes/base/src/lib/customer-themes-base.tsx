@@ -1,11 +1,29 @@
-import styles from './customer-themes-base.module.css';
+import { createTheme, ThemeOptions } from '@mui/material/styles';
 
-export function OnboardingCourseCustomerThemesBase() {
-  return (
-    <div className={styles['container']}>
-      <h1>Welcome to OnboardingCourseCustomerThemesBase!</h1>
-    </div>
-  );
-}
+export const baseThemeOptions: ThemeOptions = {
+  typography: {
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: 'none',
+        },
+      },
+    },
+  },
+};
 
-export default OnboardingCourseCustomerThemesBase;
+export const baseTheme = createTheme(baseThemeOptions);

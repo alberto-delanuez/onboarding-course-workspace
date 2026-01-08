@@ -1,11 +1,19 @@
-import styles from './customer-themes-blue.module.css';
+import { createTheme, ThemeOptions } from '@mui/material/styles';
+import { baseThemeOptions } from '@onboarding-course/customer-themes-base';
 
-export function OnboardingCourseCustomerThemesBlue() {
-  return (
-    <div className={styles['container']}>
-      <h1>Welcome to OnboardingCourseCustomerThemesBlue!</h1>
-    </div>
-  );
-}
+export const blueThemeOptions: ThemeOptions = {
+  ...baseThemeOptions,
+  palette: {
+    primary: {
+      main: '#0d47a1', // Deep Blue
+    },
+    secondary: {
+      main: '#546e7a', // Blue Grey
+    },
+  },
+  shape: {
+    borderRadius: 4,
+  },
+};
 
-export default OnboardingCourseCustomerThemesBlue;
+export const blueTheme = createTheme(blueThemeOptions);

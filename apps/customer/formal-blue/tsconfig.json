@@ -3,6 +3,12 @@
   "include": [],
   "references": [
     {
+      "path": "../../../libs/customer/themes/base"
+    },
+    {
+      "path": "../../../libs/customer/themes/blue"
+    },
+    {
       "path": "./tsconfig.app.json"
     },
     {

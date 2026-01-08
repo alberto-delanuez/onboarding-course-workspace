@@ -7,6 +7,14 @@ import * as path from 'path';
 export default defineConfig(() => ({
   root: __dirname,
   cacheDir: '../../../../node_modules/.vite/libs/customer/themes/blue',
+  resolve: {
+    alias: {
+      '@onboarding-course/customer-themes-base': path.resolve(
+        __dirname,
+        '../base/src/index.ts'
+      ),
+    },
+  },
   plugins: [
     react(),
     dts({
