@@ -4,7 +4,28 @@
   "files": [],
   "references": [
     {
-      "path": "./apps/react-demo"
+      "path": "./apps/FormalBlue"
+    },
+    {
+      "path": "./apps/MadGreen"
+    },
+    {
+      "path": "./libs/profile/feature"
+    },
+    {
+      "path": "./libs/profile/ui"
+    },
+    {
+      "path": "./libs/profile/data"
+    },
+    {
+      "path": "./libs/auth/data"
+    },
+    {
+      "path": "./libs/auth/feature"
+    },
+    {
+      "path": "./libs/auth/ui"
     }
   ]
 }
