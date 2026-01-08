@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 
 import { Route, Routes, Link } from 'react-router-dom';
-import { ProfileFeature } from '@onboarding-course/profile';
+import { ProfileFeature } from '@onboarding-course/feature-profile';
 
 export function App() {
   return (
