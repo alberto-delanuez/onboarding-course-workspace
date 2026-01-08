@@ -24,6 +24,22 @@ export default [
               sourceTag: '*',
               onlyDependOnLibsWithTags: ['*'],
             },
+            {
+              sourceTag: 'scope:customer',
+              onlyDependOnLibsWithTags: ['scope:shared', 'scope:customer'],
+            },
+            {
+              sourceTag: 'type:ui',
+              onlyDependOnLibsWithTags: ['type:domain', 'type:application', 'type:infrastructure', 'type:ui'],
+            },
+            {
+              sourceTag: 'type:infrastructure',
+              onlyDependOnLibsWithTags: ['type:domain', 'type:application'],
+            },
+            {
+              sourceTag: 'type:application',
+              onlyDependOnLibsWithTags: ['type:domain'],
+            },
           ],
         },
       ],
