@@ -4,13 +4,13 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig(() => ({
   root: __dirname,
-  cacheDir: '../../node_modules/.vite/apps/mad-green',
+  cacheDir: '../../../node_modules/.vite/apps/customer/formal-blue',
   server: {
-    port: 4201,
+    port: 4200,
     host: 'localhost',
   },
   preview: {
-    port: 4201,
+    port: 4200,
     host: 'localhost',
   },
   plugins: [react()],
@@ -23,7 +23,7 @@ export default defineConfig(() => ({
     },
   },
   test: {
-    name: '@onboarding-course/mad-green',
+    name: '@onboarding-course/formal-blue',
     watch: false,
     globals: true,
     environment: 'jsdom',
