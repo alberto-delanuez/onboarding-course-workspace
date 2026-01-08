@@ -157,18 +157,6 @@ importers:
         specifier: ^3.0.0
         version: 3.2.4(@types/node@20.19.27)(@vitest/ui@3.2.4)(jiti@2.4.2)(jsdom@22.1.0)(terser@5.44.1)(yaml@2.8.2)
 
-  libs/auth/data: {}
-
-  libs/auth/feature: {}
-
-  libs/auth/ui: {}
-
-  libs/profile/data: {}
-
-  libs/profile/feature: {}
-
-  libs/profile/ui: {}
-
 packages:
 
   '@ampproject/remapping@2.3.0':

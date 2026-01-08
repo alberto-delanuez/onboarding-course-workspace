@@ -1,0 +1,64 @@
+import { createTheme, ThemeOptions } from '@mui/material/styles';
+import { baseThemeOptions } from '@onboarding-course/customer-themes-base';
+
+export const blueThemeOptions: ThemeOptions = {
+  ...baseThemeOptions,
+  palette: {
+    primary: {
+      main: '#1976d2', // Blue
+    },
+    secondary: {
+      main: '#2e7d32', // Green
+    },
+    tertiary: {
+      main: '#bbdefb', // Light Blue
+    },
+    navbar: {
+      main: '#0d47a1', // Dark Blue
+    },
+  },
+  typography: {
+    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    h1: { fontWeight: 700 },
+    h2: { fontWeight: 600 },
+    h3: { fontWeight: 600 },
+  },
+  components: {
+    ...baseThemeOptions.components,
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: 4, // Formal, slightly rounded
+          textTransform: 'uppercase', // Formal style
+          padding: '8px 16px',
+        },
+        contained: {
+          boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+        },
+      },
+    },
+    MuiTextField: {
+      defaultProps: {
+        variant: 'outlined',
+      },
+      styleOverrides: {
+        root: {
+          '& .MuiOutlinedInput-root': {
+            borderRadius: 4,
+          },
+        },
+      },
+    },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          borderRadius: 4,
+          boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+          border: '1px solid #e0e0e0',
+        },
+      },
+    },
+  },
+};
+
+export const blueTheme = createTheme(blueThemeOptions);

@@ -1,0 +1,22 @@
+{
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "../../../libs/customer/common/ui"
+    },
+    {
+      "path": "../../../libs/customer/auth/ui"
+    },
+    {
+      "path": "../../../libs/customer/themes/blue"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ],
+  "extends": "../../../tsconfig.base.json"
+}

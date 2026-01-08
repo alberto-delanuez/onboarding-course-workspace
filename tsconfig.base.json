@@ -17,15 +17,44 @@
     "strict": true,
     "target": "es2022",
     "customConditions": ["development"],
+    "baseUrl": ".",
     "paths": {
-      "@onboarding-course/data-auth": ["./libs/auth/data/src/index.ts"],
-      "@onboarding-course/data-profile": ["./libs/profile/data/src/index.ts"],
-      "@onboarding-course/feature-auth": ["./libs/auth/feature/src/index.ts"],
-      "@onboarding-course/feature-profile": [
-        "./libs/profile/feature/src/index.ts"
+      "@onboarding-course/customer-auth-application": [
+        "libs/customer/auth/application/src/index.ts"
       ],
-      "@onboarding-course/ui-auth": ["./libs/auth/ui/src/index.tsx"],
-      "@onboarding-course/ui-profile": ["./libs/profile/ui/src/index.tsx"]
+      "@onboarding-course/customer-auth-domain": [
+        "libs/customer/auth/domain/src/index.ts"
+      ],
+      "@onboarding-course/customer-auth-infrastructure": [
+        "libs/customer/auth/infrastructure/src/index.ts"
+      ],
+      "@onboarding-course/customer-auth-ui": [
+        "libs/customer/auth/ui/src/index.ts"
+      ],
+      "@onboarding-course/customer-common-ui": [
+        "libs/customer/common/ui/src/index.ts"
+      ],
+      "@onboarding-course/customer-profile-application": [
+        "libs/customer/profile/application/src/index.ts"
+      ],
+      "@onboarding-course/customer-profile-domain": [
+        "libs/customer/profile/domain/src/index.ts"
+      ],
+      "@onboarding-course/customer-profile-infrastructure": [
+        "libs/customer/profile/infrastructure/src/index.ts"
+      ],
+      "@onboarding-course/customer-profile-ui": [
+        "libs/customer/profile/ui/src/index.ts"
+      ],
+      "@onboarding-course/customer-themes-base": [
+        "libs/customer/themes/base/src/index.ts"
+      ],
+      "@onboarding-course/customer-themes-blue": [
+        "libs/customer/themes/blue/src/index.ts"
+      ],
+      "@onboarding-course/customer-themes-purple": [
+        "libs/customer/themes/purple/src/index.ts"
+      ]
     }
   }
 }

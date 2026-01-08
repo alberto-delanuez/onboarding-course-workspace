@@ -4,28 +4,46 @@
   "files": [],
   "references": [
     {
-      "path": "./apps/FormalBlue"
+      "path": "./apps/customer/mad-purple"
     },
     {
-      "path": "./apps/MadGreen"
+      "path": "./apps/customer/formal-blue"
     },
     {
-      "path": "./libs/profile/feature"
+      "path": "./libs/customer/auth/domain"
     },
     {
-      "path": "./libs/profile/ui"
+      "path": "./libs/customer/auth/application"
     },
     {
-      "path": "./libs/profile/data"
+      "path": "./libs/customer/auth/infrastructure"
     },
     {
-      "path": "./libs/auth/data"
+      "path": "./libs/customer/auth/ui"
     },
     {
-      "path": "./libs/auth/feature"
+      "path": "./libs/customer/themes/base"
     },
     {
-      "path": "./libs/auth/ui"
+      "path": "./libs/customer/themes/blue"
+    },
+    {
+      "path": "./libs/customer/profile/domain"
+    },
+    {
+      "path": "./libs/customer/profile/application"
+    },
+    {
+      "path": "./libs/customer/profile/ui"
+    },
+    {
+      "path": "./libs/customer/profile/infrastructure"
+    },
+    {
+      "path": "./libs/customer/common/ui"
+    },
+    {
+      "path": "./libs/customer/themes/purple"
     }
   ]
 }
