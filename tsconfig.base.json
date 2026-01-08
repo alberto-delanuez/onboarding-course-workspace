@@ -16,16 +16,6 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "es2022",
-    "customConditions": ["development"],
-    "paths": {
-      "@onboarding-course/data-auth": ["./libs/auth/data/src/index.ts"],
-      "@onboarding-course/data-profile": ["./libs/profile/data/src/index.ts"],
-      "@onboarding-course/feature-auth": ["./libs/auth/feature/src/index.ts"],
-      "@onboarding-course/feature-profile": [
-        "./libs/profile/feature/src/index.ts"
-      ],
-      "@onboarding-course/ui-auth": ["./libs/auth/ui/src/index.tsx"],
-      "@onboarding-course/ui-profile": ["./libs/profile/ui/src/index.tsx"]
-    }
+    "customConditions": ["development"]
   }
 }

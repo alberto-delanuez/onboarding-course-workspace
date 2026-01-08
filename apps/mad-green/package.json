@@ -1,0 +1,7 @@
+{
+  "name": "@onboarding-course/mad-green",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "target": "common-info"
+}
