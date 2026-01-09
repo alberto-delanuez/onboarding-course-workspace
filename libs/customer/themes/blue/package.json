@@ -15,6 +15,6 @@
     }
   },
   "dependencies": {
-    "@onboarding-course/customer-themes-base": "^0.0.1"
+    "@onboarding-course/customer-themes-base": "workspace:*"
   }
 }

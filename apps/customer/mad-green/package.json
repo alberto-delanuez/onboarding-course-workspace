@@ -10,9 +10,9 @@
     }
   },
   "dependencies": {
-    "@onboarding-course/customer-themes-green": "^0.0.1",
-    "@onboarding-course/customer-themes-base": "^0.0.1",
-    "@onboarding-course/customer-auth-ui": "^0.0.1",
-    "@onboarding-course/customer-common-ui": "^0.0.1"
+    "@onboarding-course/customer-themes-green": "workspace:*",
+    "@onboarding-course/customer-themes-base": "workspace:*",
+    "@onboarding-course/customer-auth-ui": "workspace:*",
+    "@onboarding-course/customer-common-ui": "workspace:*"
   }
 }

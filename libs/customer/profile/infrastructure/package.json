@@ -15,7 +15,7 @@
     }
   },
   "dependencies": {
-    "@onboarding-course/customer-profile-domain": "^0.0.1",
-    "@onboarding-course/customer-profile-application": "^0.0.1"
+    "@onboarding-course/customer-profile-domain": "workspace:*",
+    "@onboarding-course/customer-profile-application": "workspace:*"
   }
 }

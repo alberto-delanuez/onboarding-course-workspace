@@ -15,6 +15,6 @@
     }
   },
   "dependencies": {
-    "@onboarding-course/customer-auth-domain": "^0.0.1"
+    "@onboarding-course/customer-auth-domain": "workspace:*"
   }
 }

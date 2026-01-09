@@ -15,8 +15,8 @@
     }
   },
   "dependencies": {
-    "@onboarding-course/customer-auth-domain": "^0.0.1",
-    "@onboarding-course/customer-auth-application": "^0.0.1",
-    "@onboarding-course/customer-auth-infrastructure": "^0.0.1"
+    "@onboarding-course/customer-auth-domain": "workspace:*",
+    "@onboarding-course/customer-auth-application": "workspace:*",
+    "@onboarding-course/customer-auth-infrastructure": "workspace:*"
   }
 }
