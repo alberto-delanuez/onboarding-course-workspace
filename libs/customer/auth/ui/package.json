@@ -18,5 +18,8 @@
     "@onboarding-course/customer-auth-domain": "workspace:*",
     "@onboarding-course/customer-auth-application": "workspace:*",
     "@onboarding-course/customer-auth-infrastructure": "workspace:*"
+  },
+  "nx": {
+    "tags": ["scope:customer", "type:ui"]
   }
 }

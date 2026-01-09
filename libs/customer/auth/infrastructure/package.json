@@ -17,5 +17,8 @@
   "dependencies": {
     "@onboarding-course/customer-auth-domain": "workspace:*",
     "@onboarding-course/customer-auth-application": "workspace:*"
+  },
+  "nx": {
+    "tags": ["scope:customer", "type:infrastructure"]
   }
 }

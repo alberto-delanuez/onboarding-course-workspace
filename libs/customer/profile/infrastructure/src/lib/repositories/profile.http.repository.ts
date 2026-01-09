@@ -1,8 +1,11 @@
 import { ProfileRepository, UpdateProfileDto, UserProfile } from '@onboarding-course/customer-profile-domain';
 
 export class ProfileHttpRepository implements ProfileRepository {
+    constructor(protected baseUrl: string){
+  }
+  
   async getProfile(id: string): Promise<UserProfile> {
-    const response = await fetch(`/api/profile/${id}`);
+    const response = await fetch(`${this.baseUrl}/api/profile/${id}`);
     
     if (!response.ok) {
       throw new Error('Failed to fetch profile');
@@ -12,7 +15,7 @@ export class ProfileHttpRepository implements ProfileRepository {
   }
 
   async updateProfile(id: string, data: UpdateProfileDto): Promise<UserProfile> {
-    const response = await fetch(`/api/profile/${id}`, {
+    const response = await fetch(`${this.baseUrl}/api/profile/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
