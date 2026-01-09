@@ -2,10 +2,10 @@ import { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { ThemeProvider, CssBaseline } from '@mui/material';
-import { greenTheme } from '@onboarding-course/customer-themes-green';
 import { LoginContainer, ProtectedRoute, RegisterContainer } from '@onboarding-course/customer-auth-ui';
 import Dashboard from './app/dashboard';
 import { BaseLayout } from '@onboarding-course/customer-common-ui';
+import { purpleTheme } from '@onboarding-course/customer-themes-purple';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <StrictMode>
-    <ThemeProvider theme={greenTheme}>
+    <ThemeProvider theme={purpleTheme}>
       <CssBaseline />
       <BrowserRouter>
         <Routes>

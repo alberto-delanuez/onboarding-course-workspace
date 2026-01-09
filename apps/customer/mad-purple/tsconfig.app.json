@@ -38,12 +38,6 @@
     },
     {
       "path": "../../../libs/customer/auth/ui/tsconfig.lib.json"
-    },
-    {
-      "path": "../../../libs/customer/themes/base/tsconfig.lib.json"
-    },
-    {
-      "path": "../../../libs/customer/themes/green/tsconfig.lib.json"
     }
   ]
 }

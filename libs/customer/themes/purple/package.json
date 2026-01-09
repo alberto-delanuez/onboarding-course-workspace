@@ -1,5 +1,5 @@
 {
-  "name": "@onboarding-course/customer-themes-green",
+  "name": "@onboarding-course/customer-themes-purple",
   "version": "0.0.1",
   "type": "module",
   "main": "./dist/index.js",

@@ -5,7 +5,7 @@ import { resolve } from 'path';
 
 export default defineConfig(() => ({
   root: __dirname,
-  cacheDir: '../../../node_modules/.vite/apps/customer/mad-green',
+  cacheDir: '../../../node_modules/.vite/apps/customer/mad-purple',
   server: {
     port: 4201,
     host: 'localhost',
@@ -16,9 +16,9 @@ export default defineConfig(() => ({
   },
   resolve: {
     alias: {
-      '@onboarding-course/customer-themes-green': resolve(
+      '@onboarding-course/customer-themes-purple': resolve(
         __dirname,
-        '../../../libs/customer/themes/green/src/index.ts'
+        '../../../libs/customer/themes/purple/src/index.ts'
       ),
       '@onboarding-course/customer-themes-base': resolve(
         __dirname,
@@ -56,7 +56,7 @@ export default defineConfig(() => ({
     },
   },
   test: {
-    name: '@onboarding-course/mad-green',
+    name: '@onboarding-course/mad-purple',
     watch: false,
     globals: true,
     environment: 'jsdom',

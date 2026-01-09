@@ -32,19 +32,22 @@
     "eslint.config.cjs",
     "eslint.config.mjs"
   ],
-  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx", "../../../libs/customer/common/ui/src/lib/layout/base-layout.tsx"],
+  "include": [
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "../../../libs/customer/common/ui/src/lib/layout/base-layout.tsx"
+  ],
   "references": [
+    {
+      "path": "../../../libs/customer/common/ui/tsconfig.lib.json"
+    },
     {
       "path": "../../../libs/customer/auth/ui/tsconfig.lib.json"
     },
     {
-      "path": "../../../libs/customer/themes/base/tsconfig.lib.json"
-    },
-    {
       "path": "../../../libs/customer/themes/blue/tsconfig.lib.json"
-    },
-    {
-      "path": "../../../libs/customer/common/ui/tsconfig.lib.json"
     }
   ]
 }

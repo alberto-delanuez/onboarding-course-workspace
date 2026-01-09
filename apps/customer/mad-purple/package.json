@@ -1,5 +1,5 @@
 {
-  "name": "@onboarding-course/mad-green",
+  "name": "@onboarding-course/mad-purple",
   "version": "0.0.1",
   "private": true,
   "type": "module",
@@ -10,7 +10,7 @@
     }
   },
   "dependencies": {
-    "@onboarding-course/customer-themes-green": "workspace:*",
+    "@onboarding-course/customer-themes-purple": "workspace:*",
     "@onboarding-course/customer-themes-base": "workspace:*",
     "@onboarding-course/customer-auth-ui": "workspace:*",
     "@onboarding-course/customer-common-ui": "workspace:*"

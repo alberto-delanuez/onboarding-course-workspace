@@ -6,7 +6,7 @@ import * as path from 'path';
 
 export default defineConfig(() => ({
   root: __dirname,
-  cacheDir: '../../../../node_modules/.vite/libs/customer/themes/green',
+  cacheDir: '../../../../node_modules/.vite/libs/customer/themes/purple',
   resolve: {
     alias: {
       '@onboarding-course/customer-themes-base': path.resolve(
@@ -38,7 +38,7 @@ export default defineConfig(() => ({
     lib: {
       // Could also be a dictionary or array of multiple entry points.
       entry: 'src/index.ts',
-      name: '@onboarding-course/customer-themes-green',
+      name: '@onboarding-course/customer-themes-purple',
       fileName: 'index',
       // Change this to the formats you want to support.
       // Don't forget to update your package.json as well.
@@ -50,7 +50,7 @@ export default defineConfig(() => ({
     },
   },
   test: {
-    name: '@onboarding-course/customer-themes-green',
+    name: '@onboarding-course/customer-themes-purple',
     watch: false,
     globals: true,
     environment: 'jsdom',

@@ -9,12 +9,6 @@
       "path": "../../../libs/customer/auth/ui"
     },
     {
-      "path": "../../../libs/customer/themes/base"
-    },
-    {
-      "path": "../../../libs/customer/themes/green"
-    },
-    {
       "path": "./tsconfig.app.json"
     },
     {
