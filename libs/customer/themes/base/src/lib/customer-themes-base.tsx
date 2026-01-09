@@ -3,15 +3,11 @@ import { createTheme, ThemeOptions } from '@mui/material/styles';
 // Module Augmentation to extend the theme
 declare module '@mui/material/styles' {
   interface Palette {
-    primary: Palette['primary'];
-    secondary: Palette['secondary'];
-    tertiary: Palette['tertiary'];
+    tertiary: Palette['primary'];
     navbar: Palette['primary'];
   }
   interface PaletteOptions {
-    primary?: PaletteOptions['primary'];
-    secondary?: PaletteOptions['secondary'];
-    tertiary?: PaletteOptions['tertiary'];
+    tertiary?: PaletteOptions['primary'];
     navbar?: PaletteOptions['primary'];
   }
 }
