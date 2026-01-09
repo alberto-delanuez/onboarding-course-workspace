@@ -52,8 +52,8 @@
       "@onboarding-course/customer-themes-blue": [
         "libs/customer/themes/blue/src/index.ts"
       ],
-      "@onboarding-course/customer-themes-green": [
-        "libs/customer/themes/green/src/index.ts"
+      "@onboarding-course/customer-themes-purple": [
+        "libs/customer/themes/purple/src/index.ts"
       ]
     }
   }
