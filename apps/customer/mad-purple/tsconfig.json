@@ -3,10 +3,13 @@
   "include": [],
   "references": [
     {
-      "path": "../../../libs/customer/common/ui"
+      "path": "../../../libs/customer/themes/purple"
     },
     {
       "path": "../../../libs/customer/auth/ui"
+    },
+    {
+      "path": "../../../libs/customer/common/ui"
     },
     {
       "path": "./tsconfig.app.json"
