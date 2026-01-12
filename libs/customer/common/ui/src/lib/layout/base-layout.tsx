@@ -4,9 +4,11 @@ import { Box } from '@mui/material';
 
 export interface BaseLayoutProps {
   title: string;
+  currentLocale: string;
+  onLocaleChange: (locale: string) => void;
 }
 
-export const BaseLayout = ({ title }: BaseLayoutProps) => {
+export const BaseLayout = ({ title, currentLocale, onLocaleChange }: BaseLayoutProps) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -16,7 +18,12 @@ export const BaseLayout = ({ title }: BaseLayoutProps) => {
 
   return (
     <>
-      <Navigation title={title} onLogout={handleLogout} />
+      <Navigation 
+        title={title} 
+        onLogout={handleLogout} 
+        currentLocale={currentLocale}
+        onLocaleChange={onLocaleChange}
+      />
       <Box sx={{ padding: 2, marginY: 'auto' }}>
         <Outlet />
       </Box>

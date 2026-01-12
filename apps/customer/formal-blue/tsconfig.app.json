@@ -37,7 +37,7 @@
     "src/**/*.jsx",
     "src/**/*.ts",
     "src/**/*.tsx",
-    "../../../libs/customer/common/ui/src/lib/layout/base-layout.tsx"
+    "src/**/*.json"
   ],
   "references": [
     {

@@ -18,7 +18,6 @@ export const baseThemeOptions: ThemeOptions = {
       '-apple-system',
       'BlinkMacSystemFont',
       '"Segoe UI"',
-      'Roboto',
       '"Helvetica Neue"',
       'Arial',
       'sans-serif',

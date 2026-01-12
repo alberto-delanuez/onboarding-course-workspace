@@ -1,4 +1,4 @@
-import React from 'react';
+import { useIntl } from 'react-intl';
 import { Card, CardContent, Typography, Button, Box, Chip, Stack } from '@mui/material';
 
 export interface Contract {
@@ -16,11 +16,12 @@ const mockContracts: Contract[] = [
 ];
 
 export const ContractsWidget = () => {
+  const intl = useIntl();
   return (
     <Card sx={{ height: '100%' }}>
       <CardContent>
         <Typography variant="h5" component="h2" gutterBottom color="primary">
-          My Contracts
+          {intl.formatMessage({ id: 'customer.common.widgets.contracts.title', defaultMessage: 'My Contracts' })}
         </Typography>
         <Stack spacing={2}>
           {mockContracts.map((contract) => (
@@ -42,18 +43,18 @@ export const ContractsWidget = () => {
                   {contract.name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {contract.type.toUpperCase()} • {contract.price}€/month
+                  {intl.formatMessage({ id: `customer.common.widgets.contracts.type.${contract.type}`, defaultMessage: contract.type.toUpperCase() })} • {intl.formatNumber(contract.price,{ style: 'currency', currency: 'EUR' })}
                 </Typography>
               </Box>
               <Box display="flex" flexDirection="column" alignItems="flex-end" gap={1}>
                  <Chip
-                    label={contract.status}
+                    label={intl.formatMessage({ id: `customer.common.widgets.contracts.status.${contract.status}`, defaultMessage: contract.status })}
                     color={contract.status === 'active' ? 'success' : 'warning'}
                     size="small"
                     variant="outlined"
                  />
                  <Button variant="text" size="small" color="secondary" sx={{ textDecoration: 'underline' }}>
-                   Details
+                   {intl.formatMessage({ id: 'customer.common.widgets.contracts.details', defaultMessage: 'Details' })}
                  </Button>
               </Box>
             </Box>
@@ -61,7 +62,7 @@ export const ContractsWidget = () => {
         </Stack>
         <Box mt={3} display="flex" justifyContent="flex-end">
              <Button variant="contained" sx={{ bgcolor: 'tertiary.main', color: 'tertiary.contrastText', '&:hover': { bgcolor: 'tertiary.dark' } }}>
-                New Contract
+                {intl.formatMessage({ id: 'customer.common.widgets.contracts.new', defaultMessage: 'New Contract' })}
              </Button>
         </Box>
       </CardContent>

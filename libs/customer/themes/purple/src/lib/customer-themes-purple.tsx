@@ -18,20 +18,38 @@ export const purpleThemeOptions: ThemeOptions = {
     },
   },
   typography: {
-    fontFamily: '"Inter", "Poppins", "Helvetica", "Arial", sans-serif',
-    h1: { fontWeight: 800 },
-    h2: { fontWeight: 700 },
-    button: { textTransform: 'none' }, // Modern style usually lowercase/titlecase
+    fontFamily: ['Montserrat', '"Helvetica Neue"', 'Arial', 'sans-serif'].join(','),
+    h1: {
+      fontWeight: 800,
+      fontSize: '3rem',
+      letterSpacing: '-0.02em',
+    },
+    h2: {
+      fontWeight: 700,
+      fontSize: '2.25rem',
+      letterSpacing: '-0.01em',
+    },
+    body1: {
+      fontSize: '1.125rem',
+      lineHeight: 1.6,
+    }
   },
   shape: {
     borderRadius: 16,
   },
   components: {
     ...baseThemeOptions.components,
+    MuiCssBaseline: {
+      styleOverrides: `
+        body {
+          font-family: 'Inter', "Helvetica Neue", Arial, sans-serif;
+        }
+      `,
+    },
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 24, // Pill shape
+          borderRadius: 24,
           textTransform: 'none',
           padding: '12px 24px',
           fontWeight: 600,
