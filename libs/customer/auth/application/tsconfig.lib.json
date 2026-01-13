@@ -39,6 +39,7 @@
     "eslint.config.cjs",
     "eslint.config.mjs"
   ],
+  "rootDir": ["src"],
   "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
   "references": [
     {

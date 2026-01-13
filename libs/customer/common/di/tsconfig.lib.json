@@ -15,5 +15,6 @@
     "vitest.config.ts",
     "eslint.config.mjs"
   ],
+  "rootDir": ["src"],
   "include": ["src/**/*.ts"]
 }

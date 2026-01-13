@@ -1,5 +1,6 @@
 /// <reference types='vitest' />
 import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
 import * as path from 'path';
 
@@ -11,10 +12,6 @@ export default defineConfig(() => ({
             '@onboarding-course/customer-common-di': path.resolve(
                 __dirname,
                 '../../common/di/src/index.ts'
-            ),
-            '@onboarding-course/customer-common-ui': path.resolve(
-                __dirname,
-                '../../common/ui/src/index.ts'
             ),
             '@onboarding-course/customer-auth-application': path.resolve(
                 __dirname,
@@ -36,6 +33,7 @@ export default defineConfig(() => ({
         }
     },
     plugins: [
+        react(),
         dts({
             entryRoot: 'src',
             tsconfigPath: path.join(__dirname, 'tsconfig.lib.json')
@@ -57,7 +55,7 @@ export default defineConfig(() => ({
         lib: {
             // Could also be a dictionary or array of multiple entry points.
             entry: 'src/index.ts',
-            name: '@onboarding-course/utils',
+            name: '@onboarding-course/customer-common-utils',
             fileName: 'index',
             // Change this to the formats you want to support.
             // Don't forget to update your package.json as well.
@@ -69,7 +67,7 @@ export default defineConfig(() => ({
         }
     },
     test: {
-        name: '@onboarding-course/utils',
+        name: '@onboarding-course/customer-common-utils',
         watch: false,
         globals: true,
         environment: 'node',
