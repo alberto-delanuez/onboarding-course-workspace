@@ -51,10 +51,43 @@ export class AuthHttpRepository implements AuthRepository {
     });
 
     if (!response.ok) {
-      throw new Error('Verify failed');
+      throw new Error('Token verification failed');
     }
 
     return response.json() as Promise<User>;
+  }
+
+  async socialLogin(provider: string, token: string): Promise<User> {
+  
+    // Simulate a successful login for demo purposes
+    return {
+      id: '1',
+      email: 'social@example.com',
+      name: 'Social User',
+      // HACK: DummyJSON token from user to access profile
+      accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlcm5hbWUiOiJvbGl2aWF3IiwiZW1haWwiOiJvbGl2aWEud2lsc29uQHguZHVtbXlqc29uLmNvbSIsImZpcnN0TmFtZSI6Ik9saXZpYSIsImxhc3ROYW1lIjoiV2lsc29uIiwiZ2VuZGVyIjoiZmVtYWxlIiwiaW1hZ2UiOiJodHRwczovL2R1bW15anNvbi5jb20vaWNvbi9vbGl2aWF3LzEyOCIsImlhdCI6MTc2ODMwMjk0NSwiZXhwIjoxNzY4MzA2NTQ1fQ.8rqLdKxGkosVJOTIUTNxbY0GEmd8rb711YBZy6DYYT0',
+      refreshToken: 'mock_social_refresh_token'
+    };
+  }
+
+  async requestOtp(email: string): Promise<void> {
+    // In a real app, this would call an API endpoint like POST /auth/otp/request
+    return Promise.resolve();
+  }
+
+  async loginWithOtp(email: string, code: string): Promise<User> {  
+    if (code !== '123456') {
+      throw new Error('Invalid OTP code');
+    }
+
+    return {
+      id: '2',
+      email: email,
+      name: 'OTP User',
+      // HACK: DummyJSON token from user to access profile
+      accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlcm5hbWUiOiJvbGl2aWF3IiwiZW1haWwiOiJvbGl2aWEud2lsc29uQHguZHVtbXlqc29uLmNvbSIsImZpcnN0TmFtZSI6Ik9saXZpYSIsImxhc3ROYW1lIjoiV2lsc29uIiwiZ2VuZGVyIjoiZmVtYWxlIiwiaW1hZ2UiOiJodHRwczovL2R1bW15anNvbi5jb20vaWNvbi9vbGl2aWF3LzEyOCIsImlhdCI6MTc2ODMwMjk0NSwiZXhwIjoxNzY4MzA2NTQ1fQ.8rqLdKxGkosVJOTIUTNxbY0GEmd8rb711YBZy6DYYT0',
+      refreshToken: 'mock_otp_refresh_token'
+    };
   }
 }
 

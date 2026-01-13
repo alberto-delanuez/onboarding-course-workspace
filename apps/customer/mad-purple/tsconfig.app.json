@@ -40,21 +40,6 @@
     ],
     "references": [
         {
-            "path": "../../../libs/customer/auth/infrastructure/tsconfig.lib.json"
-        },
-        {
-            "path": "../../../libs/customer/auth/application/tsconfig.lib.json"
-        },
-        {
-            "path": "../../../libs/customer/profile/infrastructure/tsconfig.lib.json"
-        },
-        {
-            "path": "../../../libs/customer/profile/application/tsconfig.lib.json"
-        },
-        {
-            "path": "../../../libs/customer/common/di/tsconfig.lib.json"
-        },
-        {
             "path": "../../../libs/customer/themes/purple/tsconfig.lib.json"
         },
         {
@@ -65,6 +50,9 @@
         },
         {
             "path": "../../../libs/customer/common/ui/tsconfig.lib.json"
+        },
+        {
+            "path": "../../../libs/customer/common/utils/tsconfig.lib.json"
         }
     ]
 }

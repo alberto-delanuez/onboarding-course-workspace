@@ -47,6 +47,9 @@
         },
         {
             "path": "./libs/customer/common/di"
+        },
+        {
+            "path": "./libs/customer/common/utils"
         }
     ]
 }

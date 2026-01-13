@@ -6,4 +6,7 @@ export interface AuthRepository {
   login(credentials: LoginDto): Promise<User>;
   register(data: RegisterDto): Promise<User>;
   verify(token: string): Promise<User>;
+  socialLogin(provider: string, token: string): Promise<User>;
+  requestOtp(email: string): Promise<void>;
+  loginWithOtp(email: string, code: string): Promise<User>;
 }

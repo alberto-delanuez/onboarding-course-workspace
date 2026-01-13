@@ -20,7 +20,6 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
       display="flex"
       justifyContent="center"
       alignItems="center"
-      minHeight="100vh"
       bgcolor="grey.100"
     >
       <Paper elevation={3} sx={{ p: 4, maxWidth: 400, width: '100%' }}>

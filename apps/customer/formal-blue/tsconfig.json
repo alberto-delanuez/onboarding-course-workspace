@@ -3,21 +3,6 @@
     "include": [],
     "references": [
         {
-            "path": "../../../libs/customer/auth/infrastructure"
-        },
-        {
-            "path": "../../../libs/customer/auth/application"
-        },
-        {
-            "path": "../../../libs/customer/profile/infrastructure"
-        },
-        {
-            "path": "../../../libs/customer/profile/application"
-        },
-        {
-            "path": "../../../libs/customer/common/di"
-        },
-        {
             "path": "../../../libs/customer/auth/ui"
         },
         {
@@ -28,6 +13,9 @@
         },
         {
             "path": "../../../libs/customer/common/ui"
+        },
+        {
+            "path": "../../../libs/customer/common/utils"
         },
         {
             "path": "./tsconfig.app.json"

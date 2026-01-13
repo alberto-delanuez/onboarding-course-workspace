@@ -62,7 +62,9 @@
         "customer.edit-profile.postalCode": "Código Postal",
         "customer.edit-profile.firstNameRequired": "Nombre es requerido",
         "customer.edit-profile.lastNameRequired": "Apellidos es requerido",
-        "customer.edit-profile.phoneRequired": "Teléfono es requerido"
+        "customer.edit-profile.phoneRequired": "Teléfono es requerido",
+        "login.with.otp": "Iniciar sesión con OTP",
+        "login.with.social": "Iniciar sesión con redes sociales"
     },
     "en": {
         "customer.auth.login.title": "Login",
@@ -127,6 +129,8 @@
         "customer.edit-profile.postalCode": "Postal Code",
         "customer.edit-profile.firstNameRequired": "First Name is required",
         "customer.edit-profile.lastNameRequired": "Last Name is required",
-        "customer.edit-profile.phoneRequired": "Phone is required"
+        "customer.edit-profile.phoneRequired": "Phone is required",
+        "login.with.otp": "Login with OTP",
+        "login.with.social": "Login with social networks"
     }
 }

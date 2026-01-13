@@ -1,0 +1,25 @@
+{
+    "name": "@onboarding-course/customer-common-utils",
+    "version": "0.0.1",
+    "private": true,
+    "type": "module",
+    "main": "./dist/index.js",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        "./package.json": "./package.json",
+        ".": {
+            "development": "./src/index.ts",
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js",
+            "default": "./dist/index.js"
+        }
+    },
+    "dependencies": {
+        "@onboarding-course/customer-common-di": "workspace:*",
+        "@onboarding-course/customer-auth-application": "workspace:*",
+        "@onboarding-course/customer-auth-infrastructure": "workspace:*",
+        "@onboarding-course/customer-profile-application": "workspace:*",
+        "@onboarding-course/customer-profile-infrastructure": "workspace:*"
+    }
+}

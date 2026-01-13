@@ -37,6 +37,9 @@
             "@onboarding-course/customer-common-ui": [
                 "libs/customer/common/ui/src/index.ts"
             ],
+            "@onboarding-course/customer-common-utils": [
+                "libs/customer/common/utils/src/index.ts"
+            ],
             "@onboarding-course/customer-profile-application": [
                 "libs/customer/profile/application/src/index.ts"
             ],
