@@ -50,7 +50,7 @@ const App = () => {
           <QueryClientProvider client={queryClient}>
           <BrowserRouter>
             <Routes>
-              <Route path="/login" element={<LoginContainer enableLogin={appConfig.enableLogin} enableSocialLogin={appConfig.enableSocialLogin} enableOTP={appConfig.enableOTP} />} />
+              <Route path="/login" element={<LoginContainer login={appConfig.login} socialLogin={appConfig.socialLogin} otp={appConfig.otp} />} />
               <Route path="/register" element={<RegisterContainer />} />
               
               <Route element={<ProtectedRoute />}>

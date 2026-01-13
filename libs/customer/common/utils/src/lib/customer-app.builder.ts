@@ -24,13 +24,33 @@ import {
 } from '@onboarding-course/customer-profile-application';
 import { ProfileHttpRepository } from '@onboarding-course/customer-profile-infrastructure';
 
+export type LoginConfig = 
+  | { enabled: false } 
+  | { enabled: true };
+
+export interface OTPEnabledConfig {
+  length?: number;
+}
+
+export type OTPConfig = 
+  | { enabled: false } 
+  | ({ enabled: true } & OTPEnabledConfig);
+
+export interface SocialLoginEnabledConfig {
+  providers: ('google' | 'facebook' | 'apple' | 'github')[];
+}
+
+export type SocialLoginConfig = 
+  | { enabled: false } 
+  | ({ enabled: true } & SocialLoginEnabledConfig);
+
 export interface AppConfig {
   title: string;
   apiUrl: string;
   defaultLocale: string;
-  enableLogin: boolean;
-  enableSocialLogin: boolean;
-  enableOTP: boolean;
+  login: LoginConfig;
+  socialLogin: SocialLoginConfig;
+  otp: OTPConfig;
 }
 
 export class CustomerAppBuilder {
@@ -41,9 +61,9 @@ export class CustomerAppBuilder {
       title: 'Customer App',
       apiUrl: 'https://dummyjson.com',
       defaultLocale: 'en',
-      enableLogin: true,
-      enableSocialLogin: false,
-      enableOTP: false
+      login: { enabled: true },
+      socialLogin: { enabled: false },
+      otp: { enabled: false }
     };
   }
 
@@ -63,17 +83,17 @@ export class CustomerAppBuilder {
   }
 
   public disableLogin(): CustomerAppBuilder {
-    this.config.enableLogin = false;
+    this.config.login = { enabled: false };
     return this;
   }
 
-  public withSocialLogin(): CustomerAppBuilder {
-    this.config.enableSocialLogin = true;
+  public withSocialLogin(providers: ('google' | 'facebook' | 'apple' | 'github')[] = ['google', 'facebook']): CustomerAppBuilder {
+    this.config.socialLogin = { enabled: true, providers };
     return this;
   }
 
-  public withOTP(): CustomerAppBuilder {
-    this.config.enableOTP = true;
+  public withOTP(length = 6): CustomerAppBuilder {
+    this.config.otp = { enabled: true, length };
     return this;
   }
 

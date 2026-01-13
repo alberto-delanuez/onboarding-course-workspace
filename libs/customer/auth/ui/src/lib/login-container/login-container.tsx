@@ -10,25 +10,24 @@ import { LoginState } from './login-reducer/reducer.types';
 import { useMemo } from 'react';
 
 
+import { OTPConfig, SocialLoginConfig, LoginConfig } from '@onboarding-course/customer-common-utils';
+
 interface LoginContainerProps {
-  enableLogin?: boolean;
-  enableSocialLogin?: boolean;
-  enableOTP?: boolean;
+  login?: LoginConfig;
+  socialLogin?: SocialLoginConfig;
+  otp?: OTPConfig;
 }
 
-
-
-
-export const LoginContainer: React.FC<LoginContainerProps> = ({ enableLogin = true, enableSocialLogin = false, enableOTP = false }) => {
+export const LoginContainer: React.FC<LoginContainerProps> = ({ login = { enabled: true }, socialLogin = { enabled: false }, otp = { enabled: false } }) => {
   const intl = useIntl();
   const navigate = useNavigate();
 
   const initialState: LoginState = useMemo(() => ({
-    mode: !enableLogin && enableOTP ? 'OTP_REQUEST' : 'PASSWORD',
+    mode: !login.enabled && otp.enabled ? 'OTP_REQUEST' : 'PASSWORD',
     email: '',
     code: '',
     error: null,
-}), [enableLogin, enableOTP]);
+}), [login, otp]);
 
   const [state, dispatch] = useLoginReducer(
     initialState
@@ -109,14 +108,14 @@ export const LoginContainer: React.FC<LoginContainerProps> = ({ enableLogin = tr
       )}
 
       {/* PASSWORD MODE */}
-      {mode === 'PASSWORD' && enableLogin && (
+      {mode === 'PASSWORD' && login.enabled && (
         <>
           <Typography variant="h5" gutterBottom align="center">
             {intl.formatMessage({ id: 'login.title', defaultMessage: 'Login' })}
           </Typography>
           <LoginForm onSubmit={handleLogin} />
           
-          {enableOTP && (
+          {otp.enabled && (
             <Button 
               fullWidth 
               variant="text" 
@@ -128,21 +127,24 @@ export const LoginContainer: React.FC<LoginContainerProps> = ({ enableLogin = tr
           )}
         </>
       )}
-      {/* SOCIAL LOGIN SECTION (Always visible if enabled, or maybe conditional based on design?) */}
-      {mode === 'PASSWORD' && enableSocialLogin && (
+      {/* SOCIAL LOGIN SECTION */}
+      {mode === 'PASSWORD' && socialLogin.enabled && (
         <Stack spacing={2} sx={{ mt: 3 }}>
           <Typography variant="body2" align="center">
             {intl.formatMessage({ id: 'login.with.social', defaultMessage: 'Or login with' })}
           </Typography>
           <Stack direction="row" spacing={2} justifyContent="center">
-            <Button variant="outlined" onClick={() => handleSocialLogin('google')}>Google</Button>
-            <Button variant="outlined" onClick={() => handleSocialLogin('facebook')}>Facebook</Button>
+            {socialLogin.providers.map((provider) => (
+              <Button key={provider} variant="outlined" onClick={() => handleSocialLogin(provider)}>
+                {provider.charAt(0).toUpperCase() + provider.slice(1)}
+              </Button>
+            ))}
           </Stack>
         </Stack>
       )}
 
       {/* OTP REQUEST MODE */}
-      {mode === 'OTP_REQUEST' && enableOTP && (
+      {mode === 'OTP_REQUEST' && otp.enabled && (
         <Box>
           <Typography variant="h5" gutterBottom>Login with OTP</Typography>
           <Stack spacing={2}>
@@ -154,7 +156,7 @@ export const LoginContainer: React.FC<LoginContainerProps> = ({ enableLogin = tr
             />
             <Button variant="contained" onClick={handleRequestOtp} fullWidth>Send Code</Button>
             
-            {enableLogin && (
+            {login.enabled && (
               <Button variant="text" onClick={() => dispatch({ type: 'SWITCH_TO_PASSWORD' })}>
                 Back to Password Login
               </Button>
@@ -162,9 +164,8 @@ export const LoginContainer: React.FC<LoginContainerProps> = ({ enableLogin = tr
           </Stack>
         </Box>
       )}
-
       {/* OTP VERIFY MODE */}
-      {mode === 'OTP_VERIFY' && enableOTP && (
+      {mode === 'OTP_VERIFY' && otp.enabled && (
         <Box>
           <Typography variant="h5" gutterBottom>Verify OTP</Typography>
           <Stack spacing={2}>
