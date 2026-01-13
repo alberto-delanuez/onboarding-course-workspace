@@ -1,11 +1,23 @@
 import { ProfileRepository, UpdateProfileDto, UserProfile } from '@onboarding-course/customer-profile-domain';
 
 export class ProfileHttpRepository implements ProfileRepository {
-    constructor(protected baseUrl: string){
+    constructor(protected baseUrl: string = ProfileHttpRepository.getApiUrl()){
+      
   }
   
-  async getProfile(id: string): Promise<UserProfile> {
-    const response = await fetch(`${this.baseUrl}/api/profile/${id}`);
+  static getApiUrl() {
+    return import.meta.env.VITE_API_URL;
+  }
+  
+  async getProfile(): Promise<UserProfile> {
+    const response = await fetch(`${this.baseUrl}/auth/me`,
+      {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        },
+      }
+    );
     
     if (!response.ok) {
       throw new Error('Failed to fetch profile');
@@ -15,7 +27,7 @@ export class ProfileHttpRepository implements ProfileRepository {
   }
 
   async updateProfile(id: string, data: UpdateProfileDto): Promise<UserProfile> {
-    const response = await fetch(`${this.baseUrl}/api/profile/${id}`, {
+    const response = await fetch(`${this.baseUrl}/users/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

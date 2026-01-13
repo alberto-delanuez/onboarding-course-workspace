@@ -94,3 +94,4 @@ export const purpleThemeOptions: ThemeOptions = {
 };
 
 export const purpleTheme = createTheme(purpleThemeOptions);
+//export const purpleTheme = createTheme(deepmerge(baseThemeOptions, purpleThemeOptions));

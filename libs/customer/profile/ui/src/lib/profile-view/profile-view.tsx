@@ -1,6 +1,7 @@
-import React from 'react';
-import { Box, Typography, Button, Paper, Stack } from '@mui/material';
-import { UserProfile } from '@onboarding-course/customer-profile-domain';
+import { Box, Typography, Button, Paper, Stack, Grid } from '@mui/material';
+import { UserProfile, formatAddress, formatName } from '@onboarding-course/customer-profile-domain';
+import { FC } from 'react';
+import { useIntl } from 'react-intl';
 
 export interface ProfileViewProps {
   user: UserProfile;
@@ -12,31 +13,38 @@ const InfoRow = ({ label, value }: { label: string; value: string }) => (
     <Typography variant="subtitle2" color="textSecondary">
       {label}
     </Typography>
-    <Typography variant="body1">{value}</Typography>
+    <Typography variant="body1" sx={{ wordBreak: 'break-word' }}>{value}</Typography>
   </Box>
 );
 
-export const ProfileView: React.FC<ProfileViewProps> = ({ user, onEdit }) => {
+export const ProfileView: FC<ProfileViewProps> = ({ user, onEdit }) => {
+  const intl = useIntl();
   return (
-    <Paper elevation={3} sx={{ p: 4, maxWidth: 600, mx: 'auto' }}>
-      <Box display="flex" justifyContent="space-between" alignItems="center" mb={3}>
+    <Paper elevation={3} sx={{ p: { xs: 2, md: 4 }, maxWidth: '100%', width: { md: 600 }, mx: 'auto' }}>
+      <Box display="flex" flexDirection={{ xs: 'column', sm: 'row' }} justifyContent="space-between" alignItems={{ xs: 'flex-start', sm: 'center' }} mb={3} gap={2}>
         <Typography variant="h5" component="h1">
-          My Profile
+          {intl.formatMessage({ id: 'customer.profile.myProfile' })}
         </Typography>
-        <Button variant="outlined" onClick={onEdit}>
-          Edit Profile
+        <Button variant="outlined" onClick={onEdit} fullWidth={false} sx={{ alignSelf: { xs: 'stretch', sm: 'auto' } }}>
+          {intl.formatMessage({ id: 'customer.profile.editProfile' })}
         </Button>
       </Box>
 
       <Stack spacing={2}>
-        <Box display="grid" gridTemplateColumns="1fr 1fr" gap={2}>
-          <InfoRow label="Name" value={user.name} />
-          <InfoRow label="Email" value={user.email} />
-        </Box>
-        <Box display="grid" gridTemplateColumns="1fr 1fr" gap={2}>
-          <InfoRow label="Phone" value={user.phone || '-'} />
-        </Box>
-        <InfoRow label="Address" value={user.address || '-'} />
+        <Grid container spacing={2}>
+          <Grid size={{ xs: 12, sm: 6 }}>
+            <InfoRow label={intl.formatMessage({ id: 'customer.profile.name' })} value={formatName(user)} />
+          </Grid>
+          <Grid size={{ xs: 12, sm: 6 }}>
+            <InfoRow label={intl.formatMessage({ id: 'customer.profile.email' })} value={user.email} />
+          </Grid>
+          <Grid size={{ xs: 12, sm: 6 }}>
+            <InfoRow label={intl.formatMessage({ id: 'customer.profile.phone' })} value={user.phone || '-'} />
+          </Grid>
+          <Grid size={{ xs: 12 }}>
+            <InfoRow label={intl.formatMessage({ id: 'customer.profile.address' })} value={formatAddress(user.address)} />
+          </Grid>
+        </Grid>
       </Stack>
     </Paper>
   );

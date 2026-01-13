@@ -1,23 +1,20 @@
-import React, { useState } from 'react';
-import { Box, Button, TextField, Typography, Alert, Paper, Link as MuiLink } from '@mui/material';
+import { Box, Button, TextField, Typography, Paper, Link as MuiLink, Alert } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { LoginDto } from '@onboarding-course/customer-auth-domain';
+import { useIntl } from 'react-intl';
+import {  Controller } from 'react-hook-form';
+import { useLoginForm } from './form/useLoginForm';
+
 
 export interface LoginFormProps {
   onSubmit: (credentials: LoginDto) => Promise<void>;
-  isLoading?: boolean;
-  error?: string | null;
 }
 
-export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, isLoading = false, error = null }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
+  const intl = useIntl();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onSubmit({ email, password });
-  };
-
+  const { handleSubmit, control, formState: { errors, isSubmitting } } = useLoginForm();
+  
   return (
     <Box
       display="flex"
@@ -28,36 +25,51 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, isLoading = fals
     >
       <Paper elevation={3} sx={{ p: 4, maxWidth: 400, width: '100%' }}>
         <Typography variant="h5" component="h1" gutterBottom align="center">
-          Login
+          {intl.formatMessage({ id: 'customer.auth.login.title', defaultMessage: 'Login' })}
         </Typography>
 
-        {error && (
-          <Alert severity="error" sx={{ mb: 2 }}>
-            {error}
-          </Alert>
-        )}
 
-        <form onSubmit={handleSubmit}>
-          <TextField
-            label="Email"
-            type="string"
-            fullWidth
-            margin="normal"
-            value={email}
-            onChange={(e: any) => setEmail(e.target.value)}
-            required
-            disabled={isLoading}
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Controller 
+            name="email"
+            control={control}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                label={intl.formatMessage({ id: 'customer.auth.login.email', defaultMessage: 'Email' })}
+                type="string"
+                fullWidth
+                margin="normal"            
+                disabled={isSubmitting}
+                data-hook="email"
+              />
+            )}
           />
-          <TextField
-            label="Password"
-            type="password"
-            fullWidth
-            margin="normal"
-            value={password}
-            onChange={(e: any) => setPassword(e.target.value)}
-            required
-            disabled={isLoading}
+          {errors.email && (
+            <Alert severity="error" sx={{ mb: 1 }}>
+              {errors.email.message}
+            </Alert>        
+          )}
+          <Controller 
+            name="password"
+            control={control}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                label={intl.formatMessage({ id: 'customer.auth.login.password', defaultMessage: 'Password' })}
+                type="password"
+                fullWidth
+                margin="normal"
+                disabled={isSubmitting}
+                data-hook="password"
+              />
+            )}
           />
+          {errors.password && (
+            <Alert severity="error" sx={{ mb: 1 }}>
+              {errors.password.message}
+            </Alert>
+          )}
           <Button
             type="submit"
             variant="contained"
@@ -65,16 +77,14 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, isLoading = fals
             fullWidth
             size="large"
             sx={{ mt: 3 }}
-            disabled={isLoading}
+            disabled={isSubmitting}
+            data-hook="submit"
           >
-            {isLoading ? 'Logging in...' : 'Login'}
+            {isSubmitting ? intl.formatMessage({ id: 'customer.auth.login.loading', defaultMessage: 'Logging in...' }) : intl.formatMessage({ id: 'customer.auth.login.submit', defaultMessage: 'Login' })}
           </Button>
           <Box mt={2} textAlign="center">
             <Typography variant="body2">
-              Don't have an account?{' '}
-              <MuiLink component={Link} to="/register">
-                Register
-              </MuiLink>
+              {intl.formatMessage({ id: 'customer.auth.login.register.link', defaultMessage: "Don't have an account? {{link}}"}, { link: <MuiLink component={Link} to="/register">{intl.formatMessage({ id: 'customer.auth.login.register', defaultMessage: 'Register' }) }</MuiLink> } )}
             </Typography>
           </Box>
         </form>

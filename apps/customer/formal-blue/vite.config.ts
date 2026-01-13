@@ -44,6 +44,22 @@ export default defineConfig(() => ({
         __dirname,
         '../../../libs/customer/common/ui/src/index.ts'
       ),
+      '@onboarding-course/customer-profile-ui': resolve(
+        __dirname,
+        '../../../libs/customer/profile/ui/src/index.ts'
+      ),
+      '@onboarding-course/customer-profile-domain': resolve(
+        __dirname,
+        '../../../libs/customer/profile/domain/src/index.ts'
+      ),
+      '@onboarding-course/customer-profile-infrastructure': resolve(
+        __dirname,
+        '../../../libs/customer/profile/infrastructure/src/index.ts'
+      ),
+      '@onboarding-course/customer-profile-application': resolve(
+        __dirname,
+        '../../../libs/customer/profile/application/src/index.ts'
+      ),
     },
   },
   plugins: [react()],

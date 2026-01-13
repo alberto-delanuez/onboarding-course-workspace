@@ -1,5 +1,11 @@
 export interface UpdateProfileDto {
-  name?: string;
+  firstName?: string;
+  lastName?: string;
   phone?: string;
-  address?: string;
+  address?: {
+    address?: string;
+    city?: string;
+    state?: string;
+    postalCode?: string;
+  };
 }

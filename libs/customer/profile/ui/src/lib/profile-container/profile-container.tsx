@@ -1,95 +1,49 @@
-import React, { useEffect, useState } from 'react';
-import { 
-  GetProfileUseCase, 
-  UpdateProfileUseCase 
-} from '@onboarding-course/customer-profile-application';
-import { ProfileHttpRepository } from '@onboarding-course/customer-profile-infrastructure';
-import { UserProfile, UpdateProfileDto } from '@onboarding-course/customer-profile-domain';
+import { useSuspenseQuery } from '@tanstack/react-query';
+import { profileQueries } from '../queries/profile.queries';
 import { ProfileView } from '../profile-view/profile-view';
+import { Box, Container } from '@mui/material';
+import { EditableContent } from '@onboarding-course/customer-common-ui';
 import { ProfileEditForm } from '../profile-edit-form/profile-edit-form';
-import { Box, CircularProgress, Alert } from '@mui/material';
+import { useState } from 'react';
+import { UserProfile, UpdateProfileDto } from '@onboarding-course/customer-profile-domain';
+import { ProfileHttpRepository } from '@onboarding-course/customer-profile-infrastructure';
+import { UpdateProfileUseCase } from '@onboarding-course/customer-profile-application';
 
-export const ProfileContainer: React.FC = () => {
-  const [user, setUser] = useState<UserProfile | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isSaving, setIsSaving] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+
+
+export const ProfileContainer = () => {
+  const profileRepository = new ProfileHttpRepository(ProfileHttpRepository.getApiUrl());
+  const updateProfileUseCase = new UpdateProfileUseCase(profileRepository);
+
+  const [updatedUser, setUpdatedUser] = useState<UpdateProfileDto>({});
   const [isEditing, setIsEditing] = useState(false);
+  const handleEdit = () => setIsEditing(true);
+  const handleCancel = () => setIsEditing(false);
 
-  // In a real app, this ID would come from auth context or URL
-  const userId = '1'; 
 
-  useEffect(() => {
-    loadProfile();
-  }, []);
-
-  const loadProfile = async () => {
-    setIsLoading(true);
-    setError(null);
-    try {
-      const repository = new ProfileHttpRepository();
-      const useCase = new GetProfileUseCase(repository);
-      const profile = await useCase.execute(userId);
-      setUser(profile);
-    } catch (err: any) {
-      setError('Failed to load profile. Please try again.');
-      console.error(err);
-    } finally {
-      setIsLoading(false);
-    }
+  //HACK to make sure we have the latest user data when saving because we are using a local state to store the updated user
+  const handleSave = (updatedUser: UpdateProfileDto) => { 
+    setIsEditing(false);  
+    //override user with updatedUser
+    setUpdatedUser(updatedUser);
+    return updateProfileUseCase.execute(user.id,updatedUser); 
   };
 
-  const handleUpdate = async (data: UpdateProfileDto) => {
-    setIsSaving(true);
-    setError(null);
-    try {
-      const repository = new ProfileHttpRepository();
-      const useCase = new UpdateProfileUseCase(repository);
-      const updatedProfile = await useCase.execute(userId, data);
-      setUser(updatedProfile);
-      setIsEditing(false);
-    } catch (err: any) {
-      setError('Failed to update profile. Please try again.');
-      console.error(err);
-    } finally {
-      setIsSaving(false);
-    }
-  };
+  const overrideUser = (user: UserProfile) => ({
+    ...user,
+    ...updatedUser,
+  }) as UserProfile;
 
-  if (isLoading) {
-    return (
-      <Box display="flex" justifyContent="center" p={4}>
-        <CircularProgress />
-      </Box>
-    );
-  }
-
-  if (error && !user) {
-    return (
-      <Box p={4}>
-        <Alert severity="error">{error}</Alert>
-      </Box>
-    );
-  }
-
-  if (!user) return null;
-
+  const { data: user } = useSuspenseQuery(profileQueries.details());
   return (
-    <Box p={2}>
-      {isEditing ? (
-        <ProfileEditForm 
-          user={user} 
-          onSubmit={handleUpdate} 
-          onCancel={() => setIsEditing(false)}
-          isLoading={isSaving}
-          error={error}
-        />
-      ) : (
-        <ProfileView 
-          user={user} 
-          onEdit={() => setIsEditing(true)} 
-        />
-      )}
-    </Box>
+    <Container maxWidth="lg">
+      <Box p={2}>
+        <EditableContent
+          isEditing={isEditing}
+          view={<ProfileView user={overrideUser(user)} onEdit={handleEdit} />}
+          edit={<ProfileEditForm user={overrideUser(user)} onCancel={handleCancel} onSubmit={handleSave} />}
+          />
+      </Box>
+    </Container>
   );
 };
