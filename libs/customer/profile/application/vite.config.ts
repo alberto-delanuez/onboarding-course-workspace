@@ -9,7 +9,11 @@ export default defineConfig(() => ({
   cacheDir: '../../../../node_modules/.vite/libs/customer/profile/application',
   resolve: {
     alias: {
-      '@onboarding-course/customer-profile-domain': path.resolve(__dirname, '../domain/src'),
+      '@onboarding-course/customer-profile-domain': path.resolve(__dirname, '../domain/src/index.ts'),
+      '@onboarding-course/customer-common-di': path.resolve(
+        __dirname,
+        '../../common/di/src/index.ts'
+      ),
     },
   },
   plugins: [

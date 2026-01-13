@@ -60,6 +60,10 @@ export default defineConfig(() => ({
         __dirname,
         '../../../libs/customer/profile/application/src/index.ts'
       ),
+      '@onboarding-course/customer-common-di': resolve(
+        __dirname,
+        '../../../libs/customer/common/di/src/index.ts'
+      ),
     },
   },
   plugins: [react()],

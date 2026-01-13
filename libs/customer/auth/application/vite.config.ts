@@ -13,6 +13,10 @@ export default defineConfig(() => ({
         __dirname,
         '../domain/src/index.ts'
       ),
+      '@onboarding-course/customer-common-di': path.resolve(
+        __dirname,
+        '../../common/di/src/index.ts'
+      ),
     }
   },
   plugins: [

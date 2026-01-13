@@ -15,7 +15,8 @@
     }
   },
   "dependencies": {
-    "@onboarding-course/customer-auth-domain": "workspace:*"
+    "@onboarding-course/customer-auth-domain": "workspace:*",
+    "@onboarding-course/customer-common-di": "workspace:*"
   },
   "nx": {
     "tags": ["scope:customer", "type:application"]

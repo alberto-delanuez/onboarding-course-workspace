@@ -14,6 +14,9 @@
     "@onboarding-course/customer-themes-base": "workspace:*",
     "@onboarding-course/customer-auth-ui": "workspace:*",
     "@onboarding-course/customer-common-ui": "workspace:*",
-    "@onboarding-course/customer-profile-ui": "workspace:*"
+    "@onboarding-course/customer-profile-ui": "workspace:*",
+    "@onboarding-course/customer-profile-application": "workspace:*",
+    "@onboarding-course/customer-profile-infrastructure": "workspace:*",
+    "@onboarding-course/customer-common-di": "workspace:*"
   }
 }
