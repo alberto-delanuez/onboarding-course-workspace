@@ -12,6 +12,7 @@ export default defineConfig(() => ({
       '@onboarding-course/customer-profile-domain': path.resolve(__dirname, '../domain/src'),
       '@onboarding-course/customer-profile-application': path.resolve(__dirname, '../application/src'),
       '@onboarding-course/customer-profile-infrastructure': path.resolve(__dirname, '../infrastructure/src'),
+      '@onboarding-course/customer-common-ui': path.resolve(__dirname, '../../common/ui/src'),
     },
   },
   plugins: [

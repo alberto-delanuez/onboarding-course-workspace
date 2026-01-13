@@ -41,13 +41,16 @@
   ],
   "references": [
     {
-      "path": "../../../libs/customer/common/ui/tsconfig.lib.json"
-    },
-    {
       "path": "../../../libs/customer/auth/ui/tsconfig.lib.json"
     },
     {
       "path": "../../../libs/customer/themes/blue/tsconfig.lib.json"
+    },
+    {
+      "path": "../../../libs/customer/profile/ui/tsconfig.lib.json"
+    },
+    {
+      "path": "../../../libs/customer/common/ui/tsconfig.lib.json"
     }
   ]
 }

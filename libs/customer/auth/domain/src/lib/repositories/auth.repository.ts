@@ -5,4 +5,5 @@ import { User } from '../models/user.model';
 export interface AuthRepository {
   login(credentials: LoginDto): Promise<User>;
   register(data: RegisterDto): Promise<User>;
+  verify(token: string): Promise<User>;
 }

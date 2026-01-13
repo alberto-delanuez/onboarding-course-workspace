@@ -38,7 +38,11 @@ export const Navigation: React.FC<NavigationProps> = ({ title, onLogout, current
           <Button color="inherit" component={Link} to="/dashboard">
             {intl.formatMessage({ id: 'customer.common.nav.dashboard', defaultMessage: 'Dashboard' })}
           </Button>
-          <Button color="inherit" component={Link} to="/profile">
+          <Button 
+            color="inherit" 
+            component={Link} 
+            to="/profile"
+          >
             {intl.formatMessage({ id: 'customer.common.nav.profile', defaultMessage: 'Profile' })}
           </Button>
           

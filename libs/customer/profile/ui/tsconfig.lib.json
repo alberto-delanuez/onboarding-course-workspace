@@ -42,13 +42,16 @@
   "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
   "references": [
     {
-      "path": "../domain/tsconfig.lib.json"
-    },
-    {
       "path": "../infrastructure/tsconfig.lib.json"
     },
     {
       "path": "../application/tsconfig.lib.json"
+    },
+    {
+      "path": "../domain/tsconfig.lib.json"
+    },
+    {
+      "path": "../../common/ui/tsconfig.lib.json"
     }
   ]
 }

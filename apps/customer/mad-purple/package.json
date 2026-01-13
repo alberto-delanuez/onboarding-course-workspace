@@ -13,6 +13,7 @@
     "@onboarding-course/customer-themes-purple": "workspace:*",
     "@onboarding-course/customer-themes-base": "workspace:*",
     "@onboarding-course/customer-auth-ui": "workspace:*",
-    "@onboarding-course/customer-common-ui": "workspace:*"
+    "@onboarding-course/customer-common-ui": "workspace:*",
+    "@onboarding-course/customer-profile-ui": "workspace:*"
   }
 }

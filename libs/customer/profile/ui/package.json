@@ -17,7 +17,8 @@
   "dependencies": {
     "@onboarding-course/customer-profile-domain": "workspace:*",
     "@onboarding-course/customer-profile-application": "workspace:*",
-    "@onboarding-course/customer-profile-infrastructure": "workspace:*"
+    "@onboarding-course/customer-profile-infrastructure": "workspace:*",
+    "@onboarding-course/customer-common-ui": "workspace:*"
   },
   "nx": {
     "tags": ["scope:customer", "type:ui"]

@@ -3,13 +3,16 @@
   "include": [],
   "references": [
     {
-      "path": "../domain"
-    },
-    {
       "path": "../infrastructure"
     },
     {
       "path": "../application"
+    },
+    {
+      "path": "../domain"
+    },
+    {
+      "path": "../../common/ui"
     },
     {
       "path": "./tsconfig.lib.json"
