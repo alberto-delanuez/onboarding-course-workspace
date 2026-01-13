@@ -1,15 +1,14 @@
-import { LoginUseCase } from '@onboarding-course/customer-auth-application';
-import { AuthHttpRepository } from '@onboarding-course/customer-auth-infrastructure';
+import { LoginUseCaseToken } from '@onboarding-course/customer-auth-application';
 import { LoginDto } from '@onboarding-course/customer-auth-domain';
 import { LoginForm } from '../login-form/login-form';
 import { useNavigate } from 'react-router-dom';
+import { DIContainer } from '@onboarding-course/customer-common-di';
 
 
-export const LoginContainer: React.FC<{ apiUrl: string }> = ({ apiUrl = 'https://dummyjson.com/auth/login' }) => {
+export const LoginContainer: React.FC = () => {
   const navigate = useNavigate();
 
-  const authRepository = new AuthHttpRepository(apiUrl);
-  const loginUseCase = new LoginUseCase(authRepository);
+  const loginUseCase = DIContainer.get(LoginUseCaseToken);
 
   const handleLogin = async (credentials: LoginDto) => {
     try {

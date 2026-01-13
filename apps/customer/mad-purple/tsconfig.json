@@ -1,25 +1,34 @@
 {
-  "files": [],
-  "include": [],
-  "references": [
-    {
-      "path": "../../../libs/customer/profile/ui"
-    },
-    {
-      "path": "../../../libs/customer/themes/purple"
-    },
-    {
-      "path": "../../../libs/customer/auth/ui"
-    },
-    {
-      "path": "../../../libs/customer/common/ui"
-    },
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.spec.json"
-    }
-  ],
-  "extends": "../../../tsconfig.base.json"
+    "files": [],
+    "include": [],
+    "references": [
+        {
+            "path": "../../../libs/customer/profile/infrastructure"
+        },
+        {
+            "path": "../../../libs/customer/profile/application"
+        },
+        {
+            "path": "../../../libs/customer/profile/domain"
+        },
+        {
+            "path": "../../../libs/customer/themes/purple"
+        },
+        {
+            "path": "../../../libs/customer/auth/ui"
+        },
+        {
+            "path": "../../../libs/customer/profile/ui"
+        },
+        {
+            "path": "../../../libs/customer/common/ui"
+        },
+        {
+            "path": "./tsconfig.app.json"
+        },
+        {
+            "path": "./tsconfig.spec.json"
+        }
+    ],
+    "extends": "../../../tsconfig.base.json"
 }

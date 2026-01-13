@@ -10,6 +10,11 @@ import Profile from './app/profile';
 import { IntlProvider } from 'react-intl';
 import messages from './i18n/translations.json';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { DIContainer } from '@onboarding-course/customer-common-di';
+import { ProfileRepositoryToken, GetProfileUseCaseToken, UpdateProfileUseCaseToken, GetProfileUseCase, UpdateProfileUseCase } from '@onboarding-course/customer-profile-application';
+import { ProfileHttpRepository } from '@onboarding-course/customer-profile-infrastructure';
+import { AuthRepositoryToken, LoginUseCaseToken, RegisterUseCaseToken, LoginUseCase, RegisterUseCase, VerifyUseCase, VerifyUseCaseToken } from '@onboarding-course/customer-auth-application';
+import { AuthHttpRepository } from '@onboarding-course/customer-auth-infrastructure';
 
 
 const appConfig = {
@@ -17,6 +22,19 @@ const appConfig = {
   apiUrl: 'https://dummyjson.com',
   defaultLocale: 'es',
 };
+
+// Initialize DI
+const profileRepo = new ProfileHttpRepository(appConfig.apiUrl);
+DIContainer.set(ProfileRepositoryToken, profileRepo);
+DIContainer.set(GetProfileUseCaseToken, new GetProfileUseCase(profileRepo));
+DIContainer.set(UpdateProfileUseCaseToken, new UpdateProfileUseCase(profileRepo));
+
+const authRepo = new AuthHttpRepository(appConfig.apiUrl);
+DIContainer.set(AuthRepositoryToken, authRepo);
+DIContainer.set(LoginUseCaseToken, new LoginUseCase(authRepo));
+DIContainer.set(RegisterUseCaseToken, new RegisterUseCase(authRepo));
+DIContainer.set(VerifyUseCaseToken, new VerifyUseCase(authRepo));
+
 
 // Type assertion for messages to ensure it matches Record<string, string>
 const messagesMap: Record<string, Record<string, string>> = messages;
@@ -47,8 +65,8 @@ const App = () => {
           <QueryClientProvider client={queryClient}>
           <BrowserRouter>
             <Routes>
-              <Route path="/login" element={<LoginContainer apiUrl={appConfig.apiUrl} />} />
-              <Route path="/register" element={<RegisterContainer apiUrl={appConfig.apiUrl} />} /> 
+              <Route path="/login" element={<LoginContainer />} />
+              <Route path="/register" element={<RegisterContainer />} /> 
               
               <Route element={<ProtectedRoute />}>
                 <Route element={<BaseLayout title={appConfig.title} currentLocale={locale} onLocaleChange={handleLocaleChange} />}>

@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthHttpRepository } from '@onboarding-course/customer-auth-infrastructure';
-import { RegisterUseCase } from '@onboarding-course/customer-auth-application';
+import { RegisterUseCaseToken } from '@onboarding-course/customer-auth-application';
 import { RegisterDto } from '@onboarding-course/customer-auth-domain';
 import { RegisterForm } from '../register-form/register-form';
+import { DIContainer } from '@onboarding-course/customer-common-di';
 
-export const RegisterContainer: React.FC<{ apiUrl?: string }> = ({ apiUrl = 'https://dummyjson.com/auth/login' }) => {
+export const RegisterContainer: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  const authRepository = new AuthHttpRepository(apiUrl);
-  const registerUseCase = new RegisterUseCase(authRepository);
+  const registerUseCase = DIContainer.get(RegisterUseCaseToken);
 
   const handleRegister = async (data: RegisterDto) => {
     setIsLoading(true);

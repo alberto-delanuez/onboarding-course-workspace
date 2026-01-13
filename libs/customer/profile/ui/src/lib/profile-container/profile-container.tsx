@@ -6,14 +6,13 @@ import { EditableContent } from '@onboarding-course/customer-common-ui';
 import { ProfileEditForm } from '../profile-edit-form/profile-edit-form';
 import { useState } from 'react';
 import { UserProfile, UpdateProfileDto } from '@onboarding-course/customer-profile-domain';
-import { ProfileHttpRepository } from '@onboarding-course/customer-profile-infrastructure';
-import { UpdateProfileUseCase } from '@onboarding-course/customer-profile-application';
+import { UpdateProfileUseCaseToken } from '@onboarding-course/customer-profile-application';
+import { DIContainer } from '@onboarding-course/customer-common-di';
 
 
 
 export const ProfileContainer = () => {
-  const profileRepository = new ProfileHttpRepository(ProfileHttpRepository.getApiUrl());
-  const updateProfileUseCase = new UpdateProfileUseCase(profileRepository);
+  const updateProfileUseCase = DIContainer.get(UpdateProfileUseCaseToken);
 
   const [updatedUser, setUpdatedUser] = useState<UpdateProfileDto>({});
   const [isEditing, setIsEditing] = useState(false);

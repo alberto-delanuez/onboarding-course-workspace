@@ -1,15 +1,14 @@
 import { queryOptions } from '@tanstack/react-query';
-import { GetProfileUseCase } from '@onboarding-course/customer-profile-application';
-import { ProfileHttpRepository } from '@onboarding-course/customer-profile-infrastructure';
-
-const repository = new ProfileHttpRepository(ProfileHttpRepository.getApiUrl());
-const getProfileUseCase = new GetProfileUseCase(repository);
+import { GetProfileUseCaseToken } from '@onboarding-course/customer-profile-application';
+import { DIContainer } from '@onboarding-course/customer-common-di';
 
 export const profileQueries = {
-  getProfile: () =>
+  details: () =>
     queryOptions({
       queryKey: ['profile'],
-      queryFn: () => getProfileUseCase.execute(),
+      queryFn: () => {
+        const getProfileUseCase = DIContainer.get(GetProfileUseCaseToken);
+        return getProfileUseCase.execute();
+      },
     })
 };
-

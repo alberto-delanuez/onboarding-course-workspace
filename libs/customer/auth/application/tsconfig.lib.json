@@ -43,6 +43,9 @@
   "references": [
     {
       "path": "../domain/tsconfig.lib.json"
+    },
+    {
+      "path": "../../common/di/tsconfig.lib.json"
     }
   ]
 }

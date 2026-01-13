@@ -1,49 +1,52 @@
 {
-  "extends": "./tsconfig.base.json",
-  "compileOnSave": false,
-  "files": [],
-  "references": [
-    {
-      "path": "./apps/customer/mad-purple"
-    },
-    {
-      "path": "./apps/customer/formal-blue"
-    },
-    {
-      "path": "./libs/customer/auth/domain"
-    },
-    {
-      "path": "./libs/customer/auth/application"
-    },
-    {
-      "path": "./libs/customer/auth/infrastructure"
-    },
-    {
-      "path": "./libs/customer/auth/ui"
-    },
-    {
-      "path": "./libs/customer/themes/base"
-    },
-    {
-      "path": "./libs/customer/themes/blue"
-    },
-    {
-      "path": "./libs/customer/profile/domain"
-    },
-    {
-      "path": "./libs/customer/profile/application"
-    },
-    {
-      "path": "./libs/customer/profile/ui"
-    },
-    {
-      "path": "./libs/customer/profile/infrastructure"
-    },
-    {
-      "path": "./libs/customer/common/ui"
-    },
-    {
-      "path": "./libs/customer/themes/purple"
-    }
-  ]
+    "extends": "./tsconfig.base.json",
+    "compileOnSave": false,
+    "files": [],
+    "references": [
+        {
+            "path": "./apps/customer/mad-purple"
+        },
+        {
+            "path": "./apps/customer/formal-blue"
+        },
+        {
+            "path": "./libs/customer/auth/domain"
+        },
+        {
+            "path": "./libs/customer/auth/application"
+        },
+        {
+            "path": "./libs/customer/auth/infrastructure"
+        },
+        {
+            "path": "./libs/customer/auth/ui"
+        },
+        {
+            "path": "./libs/customer/themes/base"
+        },
+        {
+            "path": "./libs/customer/themes/blue"
+        },
+        {
+            "path": "./libs/customer/profile/domain"
+        },
+        {
+            "path": "./libs/customer/profile/application"
+        },
+        {
+            "path": "./libs/customer/profile/ui"
+        },
+        {
+            "path": "./libs/customer/profile/infrastructure"
+        },
+        {
+            "path": "./libs/customer/common/ui"
+        },
+        {
+            "path": "./libs/customer/themes/purple"
+        },
+        {
+            "path": "./libs/customer/common/di"
+        }
+    ]
 }

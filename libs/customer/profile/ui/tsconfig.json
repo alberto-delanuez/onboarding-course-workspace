@@ -1,25 +1,22 @@
 {
-  "files": [],
-  "include": [],
-  "references": [
-    {
-      "path": "../infrastructure"
-    },
-    {
-      "path": "../application"
-    },
-    {
-      "path": "../domain"
-    },
-    {
-      "path": "../../common/ui"
-    },
-    {
-      "path": "./tsconfig.lib.json"
-    },
-    {
-      "path": "./tsconfig.spec.json"
-    }
-  ],
-  "extends": "../../../../tsconfig.base.json"
+    "files": [],
+    "include": [],
+    "references": [
+        {
+            "path": "../application"
+        },
+        {
+            "path": "../domain"
+        },
+        {
+            "path": "../../common/ui"
+        },
+        {
+            "path": "./tsconfig.lib.json"
+        },
+        {
+            "path": "./tsconfig.spec.json"
+        }
+    ],
+    "extends": "../../../../tsconfig.base.json"
 }
