@@ -10,13 +10,7 @@ export class UserModel {
     constructor(private readonly raw: User) {}
 
     static fromRaw(raw: User): UserModel {
-        return new UserModel(
-            raw.id,
-            raw.email,
-            raw.name,
-            raw.accessToken,
-            raw.refreshToken
-        );
+        return new UserModel(raw);
     }
 
     toRaw(): User {
