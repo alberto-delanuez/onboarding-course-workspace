@@ -1,8 +1,4 @@
-import {
-    mutationOptions,
-    queryOptions,
-    useQueryClient
-} from '@tanstack/react-query';
+import { mutationOptions, queryOptions } from '@tanstack/react-query';
 import {
     GetProfileUseCaseToken,
     UpdateProfileUseCaseToken

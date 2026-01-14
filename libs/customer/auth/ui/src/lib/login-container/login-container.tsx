@@ -148,7 +148,7 @@ export const LoginContainer: React.FC<LoginContainerProps> = ({ login = { enable
               sx={{ mt: 2 }} 
               onClick={() => dispatch({ type: 'SWITCH_TO_OTP' })}
             >
-              {intl.formatMessage({ id: 'login.with.otp', defaultMessage: 'Login with OTP' })}
+              {intl.formatMessage({ id: 'customer.login.with.otp', defaultMessage: 'Login with OTP' })}
             </Button>
           )}
         </>
@@ -157,7 +157,7 @@ export const LoginContainer: React.FC<LoginContainerProps> = ({ login = { enable
       {mode === 'PASSWORD' && socialLogin.enabled && (
         <Stack spacing={2} sx={{ mt: 3 }}>
           <Typography variant="body2" align="center">
-            {intl.formatMessage({ id: 'login.with.social', defaultMessage: 'Or login with' })}
+            {intl.formatMessage({ id: 'customer.login.with.social', defaultMessage: 'Or login with' })}
           </Typography>
           <Stack direction="row" spacing={2} justifyContent="center">
             {socialLogin.providers.map((provider) => (
