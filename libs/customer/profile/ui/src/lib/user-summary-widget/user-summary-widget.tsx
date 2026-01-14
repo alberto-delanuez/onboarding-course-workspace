@@ -1,13 +1,13 @@
 import { Card, CardContent, Stack, Avatar, Typography, Box } from '@mui/material';
-import { useQuery } from '@tanstack/react-query';
 import { useIntl } from 'react-intl';
-import { profileQueries } from '../queries/profile.queries';
+
 import { formatName } from '@onboarding-course/customer-profile-domain';
 import { UserSummaryWidgetSkeleton } from './user-summary-widget-skeleton';
+import { useUserProfileQuery } from '../queries/use-profile-query';
 
 export const UserSummaryWidget = () => {
   const intl = useIntl();
-  const { data: user, isLoading, isError } = useQuery(profileQueries.details());
+  const { data: user, isLoading, isError } = useUserProfileQuery();
 
   if (isLoading) {
     return (

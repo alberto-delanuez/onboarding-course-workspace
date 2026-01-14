@@ -1,9 +1,8 @@
-import { LoginUseCaseToken, SocialLoginUseCaseToken, RequestOtpUseCaseToken, LoginWithOtpUseCaseToken } from '@onboarding-course/customer-auth-application';
+import { useLoginMutation } from '../queries/use-login-mutation';
 import { LoginDto } from '@onboarding-course/customer-auth-domain';
 import { LoginForm } from './login-form/login-form';
 import { useIntl } from 'react-intl';
 import { useNavigate } from 'react-router-dom';
-import { DIContainer } from '@onboarding-course/customer-common-di';
 import { useLoginReducer } from './login-reducer/use-login-reducer';
 import { Button, Stack, Typography, TextField, Box, Alert } from '@mui/material';
 import { LoginState } from './login-reducer/use-login-reducer.types';
@@ -11,6 +10,9 @@ import { useMemo } from 'react';
 
 
 import { OTPConfig, SocialLoginConfig, LoginConfig } from '@onboarding-course/customer-common-utils';
+import { useSocialLoginMutation } from '../queries/use-social-login-mutation';
+import { useRequestOtpMutation } from '../queries/use-request-otp-mutation';
+import { useLoginWithOtpMutation } from '../queries/use-login-with-otp-mutation';
 
 interface LoginContainerProps {
   login?: LoginConfig;
@@ -35,23 +37,52 @@ export const LoginContainer: React.FC<LoginContainerProps> = ({ login = { enable
 
   const { mode, email, code, error } = state;
 
-  const loginUseCase = DIContainer.get(LoginUseCaseToken);
-  const socialLoginUseCase = DIContainer.get(SocialLoginUseCaseToken);
-  const requestOtpUseCase = DIContainer.get(RequestOtpUseCaseToken);
-  const loginWithOtpUseCase = DIContainer.get(LoginWithOtpUseCaseToken);
-
   const handleSuccess = (token: string) => {
     window.localStorage.setItem('token', token);    
     navigate('/dashboard');
   };
 
+  const loginAsync = useLoginMutation({
+        onSuccess: ({accessToken}) => handleSuccess(accessToken),
+        onError: () => {
+          dispatch({ type: 'SET_ERROR', payload: 'Invalid credentials or login failed' });
+          throw new Error('Invalid credentials');
+        }
+  });
+
+  const socialLoginAsync = useSocialLoginMutation({
+        onSuccess: ({accessToken}) => handleSuccess(accessToken),
+        onError: () => {
+          dispatch({ type: 'SET_ERROR', payload: 'Social login failed' });
+          throw new Error('Social login failed');
+        }
+  });
+
+  const requestOtpAsync = useRequestOtpMutation({
+        onSuccess: () => {
+            dispatch({ type: 'OTP_SENT_SUCCESS' });
+        },
+        onError: () => {
+            dispatch({ type: 'SET_ERROR', payload: 'Failed to send OTP code' });
+            throw new Error('Failed to send OTP code');
+        }
+  });
+
+  const loginWithOtpAsync = useLoginWithOtpMutation({
+        onSuccess: ({accessToken}) => handleSuccess(accessToken),
+        onError: () => {
+            dispatch({ type: 'SET_ERROR', payload: 'Invalid OTP code' });
+            throw new Error('Invalid OTP code');
+        }
+  });
+
   const handleLogin = async (credentials: LoginDto) => {
     try {
       dispatch({ type: 'CLEAR_ERROR' });
-      const user = await loginUseCase.execute(credentials);
-      if(!user) throw new Error('Invalid credentials');
-      handleSuccess(user.accessToken);
-    } catch (err: any) {
+
+      await loginAsync(credentials);
+     
+    } catch (err) {
       console.error('Login error:', err);
       dispatch({ type: 'SET_ERROR', payload: 'Invalid credentials or login failed' });
     }
@@ -59,9 +90,7 @@ export const LoginContainer: React.FC<LoginContainerProps> = ({ login = { enable
 
   const handleSocialLogin = async (provider: string) => {
     try {
-      dispatch({ type: 'CLEAR_ERROR' });
-      const user = await socialLoginUseCase.execute(provider, 'mock_token');
-      handleSuccess(user.accessToken);
+      await socialLoginAsync(provider);
     } catch (err) {
       console.error('Social login error:', err);
       dispatch({ type: 'SET_ERROR', payload: `Social login with ${provider} failed` });
@@ -75,11 +104,10 @@ export const LoginContainer: React.FC<LoginContainerProps> = ({ login = { enable
         dispatch({ type: 'SET_ERROR', payload: 'Email is required' });
         return;
       }
-      await requestOtpUseCase.execute(email);
-      dispatch({ type: 'OTP_SENT_SUCCESS' });
+      await requestOtpAsync(email);
     } catch (err) {
       console.error('Request OTP error:', err);
-      dispatch({ type: 'SET_ERROR', payload: 'Failed to send OTP code' });
+      // Error handling is done in mutation onError
     }
   };
 
@@ -90,12 +118,10 @@ export const LoginContainer: React.FC<LoginContainerProps> = ({ login = { enable
         dispatch({ type: 'SET_ERROR', payload: 'OTP Code is required' });
         return;
       }
-      const user = await loginWithOtpUseCase.execute(email, code);
-      if(!user) throw new Error('Invalid OTP code');
-      handleSuccess(user.accessToken);
+      await loginWithOtpAsync({ email, code });
     } catch (err) {
       console.error('Verify OTP error:', err);
-      dispatch({ type: 'SET_ERROR', payload: 'Invalid OTP code' });
+      // Error handling is done in mutation onError
     }
   };
 

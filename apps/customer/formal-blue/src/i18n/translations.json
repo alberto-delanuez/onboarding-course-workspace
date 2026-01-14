@@ -63,10 +63,11 @@
         "customer.edit-profile.firstNameRequired": "Nombre es requerido",
         "customer.edit-profile.lastNameRequired": "Apellidos es requerido",
         "customer.edit-profile.phoneRequired": "Teléfono es requerido",
-        "login.with.otp": "Iniciar sesión con OTP",
-        "login.with.social": "Iniciar sesión con redes sociales",
+        "customer.login.with.otp": "Iniciar sesión con OTP",
+        "customer.login.with.social": "Iniciar sesión con redes sociales",
         "customer.dashboard.user.error": "Error al cargar información del usuario",
-        "customer.dashboard.user.noPhone": "No se ha proporcionado número de teléfono"
+        "customer.dashboard.user.noPhone": "No se ha proporcionado número de teléfono",
+        "customer.profile.error.loading": "Error al cargar perfil. Por favor, inténtalo de nuevo más tarde."
     },
     "en": {
         "customer.auth.login.title": "Login",
@@ -132,10 +133,11 @@
         "customer.edit-profile.firstNameRequired": "First Name is required",
         "customer.edit-profile.lastNameRequired": "Last Name is required",
         "customer.edit-profile.phoneRequired": "Phone is required",
-        "login.with.otp": "Login with OTP",
-        "login.with.social": "Login with social networks",
+        "customer.login.with.otp": "Login with OTP",
+        "customer.login.with.social": "Login with social networks",
         "customer.dashboard.user.error": "Unable to load user information",
-        "customer.dashboard.user.noPhone": "No phone number"
+        "customer.dashboard.user.noPhone": "No phone number",
+        "customer.profile.error.loading": "Error loading profile. Please try again later."
 
     }
 }
