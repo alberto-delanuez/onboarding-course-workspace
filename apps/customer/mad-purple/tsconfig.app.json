@@ -10,7 +10,8 @@
             "@nx/react/typings/cssmodule.d.ts",
             "@nx/react/typings/image.d.ts",
             "vite/client"
-        ]
+        ],
+        "rootDir": "src"
     },
     "exclude": [
         "out-tsc",
@@ -31,7 +32,6 @@
         "eslint.config.cjs",
         "eslint.config.mjs"
     ],
-    "rootDir": ["src"],
     "include": [
         "src/**/*.js",
         "src/**/*.jsx",

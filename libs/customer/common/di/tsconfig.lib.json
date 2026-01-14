@@ -2,9 +2,15 @@
   "extends": "../../../../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "dist",
-    "types": ["node", "vite/client"],
+    "types": [
+      "node",
+      "@nx/react/typings/cssmodule.d.ts",
+      "@nx/react/typings/image.d.ts",
+      "vite/client"
+    ],
+    "jsx": "react-jsx",
     "rootDir": "src",
-    "tsBuildInfoFile": "dist/tsconfig.lib.tsbuildinfo"
+    "tsBuildInfoFile": "dist/tsconfig.lib.tsbuildinfo",
   },
   "exclude": [
     "out-tsc",
@@ -15,6 +21,5 @@
     "vitest.config.ts",
     "eslint.config.mjs"
   ],
-  "rootDir": ["src"],
   "include": ["src/**/*.ts"]
 }

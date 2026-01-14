@@ -28,7 +28,7 @@ export type LoginConfig =
   | { enabled: false } 
   | { enabled: true };
 
-export interface OTPEnabledConfig {
+export type OTPEnabledConfig = {
   length?: number;
 }
 
@@ -36,7 +36,7 @@ export type OTPConfig =
   | { enabled: false } 
   | ({ enabled: true } & OTPEnabledConfig);
 
-export interface SocialLoginEnabledConfig {
+export type SocialLoginEnabledConfig = {
   providers: ('google' | 'facebook' | 'apple' | 'github')[];
 }
 
@@ -44,7 +44,7 @@ export type SocialLoginConfig =
   | { enabled: false } 
   | ({ enabled: true } & SocialLoginEnabledConfig);
 
-export interface AppConfig {
+export type AppConfig = {
   title: string;
   apiUrl: string;
   defaultLocale: string;

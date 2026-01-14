@@ -10,7 +10,8 @@
         ],
         "jsx": "react-jsx",
         "lib": ["dom", "dom.iterable", "esnext"],
-        "tsBuildInfoFile": "dist/tsconfig.lib.tsbuildinfo"
+        "tsBuildInfoFile": "dist/tsconfig.lib.tsbuildinfo",
+        "rootDir": "src",
     },
     "exclude": [
         "out-tsc",
@@ -39,7 +40,6 @@
         "eslint.config.cjs",
         "eslint.config.mjs"
     ],
-    "rootDir": ["src"],
     "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
     "references": [
         {

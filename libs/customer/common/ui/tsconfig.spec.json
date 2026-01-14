@@ -9,7 +9,7 @@
       "node",
       "vitest"
     ],
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
   },
   "include": [
     "vite.config.ts",

@@ -8,9 +8,9 @@
             "@nx/react/typings/image.d.ts",
             "vite/client"
         ],
-        "rootDir": "src",
         "jsx": "react-jsx",
-        "tsBuildInfoFile": "dist/tsconfig.lib.tsbuildinfo"
+        "tsBuildInfoFile": "dist/tsconfig.lib.tsbuildinfo",
+        "rootDir": "src"
     },
     "exclude": [
         "out-tsc",
@@ -39,7 +39,6 @@
         "eslint.config.cjs",
         "eslint.config.mjs"
     ],
-    "rootDir": ["src"],
     "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
     "references": [
         {
