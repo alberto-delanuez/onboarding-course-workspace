@@ -1,9 +1,9 @@
-import { ProfileRepository, UserProfile } from '@onboarding-course/customer-profile-domain';
+import { ProfileRepository } from '@onboarding-course/customer-profile-domain';
 
 export class GetProfileUseCase {
-  constructor(private readonly repository: ProfileRepository) {}
+    constructor(private readonly repository: ProfileRepository) {}
 
-  execute(): Promise<UserProfile> {
-    return this.repository.getProfile();
-  }
+    execute(): Promise<unknown> {
+        return this.repository.getProfile();
+    }
 }

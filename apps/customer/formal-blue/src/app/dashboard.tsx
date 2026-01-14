@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { ContractsWidget } from '@onboarding-course/customer-common-ui';
+import { UserSummaryWidget } from '@onboarding-course/customer-profile-ui';
 import Grid from '@mui/material/Grid';
 
 const Dashboard: FC = () => {
@@ -9,7 +10,7 @@ const Dashboard: FC = () => {
         <ContractsWidget />
       </Grid>
       <Grid size={4}>
-         {/* Placeholder for other widgets */}
+         <UserSummaryWidget />
       </Grid>
     </Grid>
   );

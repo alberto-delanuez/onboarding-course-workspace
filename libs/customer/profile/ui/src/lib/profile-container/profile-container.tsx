@@ -1,31 +1,31 @@
-import { useSuspenseQuery } from '@tanstack/react-query';
-import { profileQueries } from '../queries/profile.queries';
 import { ProfileView } from '../profile-view/profile-view';
-import { Box, Container } from '@mui/material';
+import { Box, CircularProgress, Container, Stack, Alert } from '@mui/material';
 import { EditableContent } from '@onboarding-course/customer-common-ui';
 import { ProfileEditForm } from '../profile-edit-form/profile-edit-form';
 import { useState } from 'react';
 import { UserProfile, UpdateProfileDto } from '@onboarding-course/customer-profile-domain';
-import { UpdateProfileUseCaseToken } from '@onboarding-course/customer-profile-application';
-import { DIContainer } from '@onboarding-course/customer-common-di';
-
-
+import { useUserProfileQuery } from '../queries/use-profile-query';
+import { useUpdateUserProfileMutation } from '../queries/use-update-profile';
+import { useIntl } from 'react-intl';
 
 export const ProfileContainer = () => {
-  const updateProfileUseCase = DIContainer.get(UpdateProfileUseCaseToken);
+  const intl = useIntl();
+
+  const { data: user, isLoading, isError } = useUserProfileQuery();
 
   const [updatedUser, setUpdatedUser] = useState<UpdateProfileDto>({});
   const [isEditing, setIsEditing] = useState(false);
   const handleEdit = () => setIsEditing(true);
   const handleCancel = () => setIsEditing(false);
 
+  const updateUserProfileAsync  = useUpdateUserProfileMutation();
 
   //HACK to make sure we have the latest user data when saving because we are using a local state to store the updated user
-  const handleSave = (updatedUser: UpdateProfileDto) => { 
+  const handleSave = async (updatedUser: UpdateProfileDto) => { 
     setIsEditing(false);  
     //override user with updatedUser
     setUpdatedUser(updatedUser);
-    return updateProfileUseCase.execute(user.id,updatedUser); 
+    return await updateUserProfileAsync({id: user?.id || '', data: updatedUser}); 
   };
 
   const overrideUser = (user: UserProfile) => ({
@@ -33,7 +33,22 @@ export const ProfileContainer = () => {
     ...updatedUser,
   }) as UserProfile;
 
-  const { data: user } = useSuspenseQuery(profileQueries.details());
+  if (isLoading) {
+    return (
+      <Stack justifyContent="center" alignItems="center" spacing={2} sx={{ height: '30vh' }}>
+        <CircularProgress />
+      </Stack>
+    );
+  }
+
+  if (isError || !user) {
+    return (
+      <Alert severity="error">
+        {intl.formatMessage({ id: 'customer.profile.error.loading' })}
+      </Alert>
+    );
+  }
+ 
   return (
     <Container maxWidth="lg">
       <Box p={2}>

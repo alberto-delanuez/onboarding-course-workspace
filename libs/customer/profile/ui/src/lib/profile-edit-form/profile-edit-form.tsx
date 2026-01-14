@@ -1,7 +1,7 @@
 import { Box, Button, TextField, Typography, Paper, Alert } from '@mui/material';
 import { UpdateProfileDto, UserProfile } from '@onboarding-course/customer-profile-domain';
 import { useIntl } from 'react-intl';
-import { useProfileForm } from './form/useProfileForm';
+import { useProfileForm } from './form/use-profile-form';
 import { Controller } from 'react-hook-form';
 
 export interface ProfileEditFormProps {

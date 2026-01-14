@@ -11,6 +11,8 @@ import messages from './i18n/translations.json';
 import Profile from './app/profile';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { CustomerAppBuilder } from '@onboarding-course/customer-common-utils';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+
 
 const appConfig = new CustomerAppBuilder()
   .withTitle('Formal Blue')
@@ -27,7 +29,7 @@ const messagesMap: Record<string, Record<string, string>> = messages;
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: Infinity,
+      staleTime: 1000 * 60,
     },
   },
 });
@@ -64,6 +66,7 @@ const App = () => {
               <Route path="*" element={<Navigate to="/login" replace />} />
             </Routes>
           </BrowserRouter>
+          <ReactQueryDevtools initialIsOpen={false} />
           </QueryClientProvider>  
         </ErrorBoundary>
       </ThemeProvider>
