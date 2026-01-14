@@ -10,8 +10,7 @@
             "@nx/react/typings/cssmodule.d.ts",
             "@nx/react/typings/image.d.ts",
             "vite/client"
-        ],
-        "rootDir": "src"
+        ]
     },
     "exclude": [
         "out-tsc",
@@ -41,6 +40,9 @@
     ],
     "references": [
         {
+            "path": "../../../libs/customer/common/utils/tsconfig.lib.json"
+        },
+        {
             "path": "../../../libs/customer/auth/ui/tsconfig.lib.json"
         },
         {
@@ -51,9 +53,6 @@
         },
         {
             "path": "../../../libs/customer/common/ui/tsconfig.lib.json"
-        },
-        {
-            "path": "../../../libs/customer/common/utils/tsconfig.lib.json"
         }
     ]
 }

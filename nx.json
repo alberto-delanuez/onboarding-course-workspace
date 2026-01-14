@@ -63,6 +63,12 @@
       "options": {
         "targetName": "e2e"
       }
+    },
+    {
+      "plugin": "@nx/plugin",
+      "options": {
+        "targetName": "pre-commit"
+      }
     }
   ],
   "targetDefaults": {
@@ -73,6 +79,13 @@
       "cache": true,
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
+    },
+    "pre-commit": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["nx lint {projectName}", "nx test {projectName}", "tsc --noEmit"],
+        "parallel": false
+      }
     }
   },
   "generators": {
