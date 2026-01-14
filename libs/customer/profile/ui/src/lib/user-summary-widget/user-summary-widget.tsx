@@ -1,7 +1,7 @@
 import { Card, CardContent, Stack, Avatar, Typography, Box } from '@mui/material';
 import { useIntl } from 'react-intl';
 
-import { formatName } from '@onboarding-course/customer-profile-domain';
+import { UserProfileModel } from '@onboarding-course/customer-profile-domain';
 import { UserSummaryWidgetSkeleton } from './user-summary-widget-skeleton';
 import { useUserProfileQuery } from '../queries/use-profile-query';
 
@@ -29,7 +29,8 @@ export const UserSummaryWidget = () => {
     );
   }
 
-  const name = formatName(user);
+  const profile = UserProfileModel.fromRaw(user);
+  const name = profile.displayName;
   const initials = name
     .split(' ')
     .filter(Boolean)
@@ -55,4 +56,3 @@ export const UserSummaryWidget = () => {
     </Card>
   );
 }
-
