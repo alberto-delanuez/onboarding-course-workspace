@@ -1,12 +1,12 @@
 import { LoginDto } from '@onboarding-course/customer-auth-domain';
-import { DIContainer } from '@onboarding-course/customer-common-di';
-import { mutationOptions } from '@tanstack/react-query';
-import {
+import { 
+    DIContainer,
     LoginUseCaseToken,
     SocialLoginUseCaseToken,
     RequestOtpUseCaseToken,
     LoginWithOtpUseCaseToken
-} from '@onboarding-course/customer-auth-application';
+} from '@onboarding-course/customer-common-di';
+import { mutationOptions } from '@tanstack/react-query';
 
 export const authMutation = {
     login: () =>

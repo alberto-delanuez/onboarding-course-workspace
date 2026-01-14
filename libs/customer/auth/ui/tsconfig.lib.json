@@ -45,13 +45,10 @@
             "path": "../../common/di/tsconfig.lib.json"
         },
         {
-            "path": "../domain/tsconfig.lib.json"
-        },
-        {
             "path": "../../common/utils/tsconfig.lib.json"
         },
         {
-            "path": "../application/tsconfig.lib.json"
+            "path": "../domain/tsconfig.lib.json"
         }
     ]
 }

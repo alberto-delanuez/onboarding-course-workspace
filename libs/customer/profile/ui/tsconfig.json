@@ -6,10 +6,13 @@
             "path": "../../common/di"
         },
         {
+            "path": "../domain"
+        },
+        {
             "path": "../application"
         },
         {
-            "path": "../domain"
+            "path": "../infrastructure"
         },
         {
             "path": "../../common/ui"

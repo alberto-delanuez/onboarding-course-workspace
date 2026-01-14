@@ -7,6 +7,12 @@ import {
   SocialLoginUseCaseToken, 
   RequestOtpUseCaseToken, 
   LoginWithOtpUseCaseToken, 
+  ProfileRepositoryToken, 
+  GetProfileUseCaseToken, 
+  UpdateProfileUseCaseToken
+} from '@onboarding-course/customer-common-di';
+
+import { 
   LoginUseCase, 
   RegisterUseCase, 
   VerifyUseCase, 
@@ -16,9 +22,6 @@ import {
 } from '@onboarding-course/customer-auth-application';
 import { AuthHttpRepository } from '@onboarding-course/customer-auth-infrastructure';
 import { 
-  ProfileRepositoryToken, 
-  GetProfileUseCaseToken, 
-  UpdateProfileUseCaseToken, 
   GetProfileUseCase, 
   UpdateProfileUseCase 
 } from '@onboarding-course/customer-profile-application';

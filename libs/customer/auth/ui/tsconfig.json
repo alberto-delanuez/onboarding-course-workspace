@@ -3,16 +3,13 @@
     "include": [],
     "references": [
         {
-            "path": "../../common/utils"
-        },
-        {
             "path": "../../common/di"
         },
         {
-            "path": "../domain"
+            "path": "../../common/utils"
         },
         {
-            "path": "../application"
+            "path": "../domain"
         },
         {
             "path": "./tsconfig.lib.json"

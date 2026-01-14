@@ -6,9 +6,6 @@
             "path": "../domain"
         },
         {
-            "path": "../../common/di"
-        },
-        {
             "path": "./tsconfig.lib.json"
         },
         {
