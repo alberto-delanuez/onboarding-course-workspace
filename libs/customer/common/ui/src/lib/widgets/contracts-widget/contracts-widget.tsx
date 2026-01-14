@@ -46,14 +46,14 @@ export const ContractsWidget = () => {
                   {intl.formatMessage({ id: `customer.common.widgets.contracts.type.${contract.type}`, defaultMessage: contract.type.toUpperCase() })} • {intl.formatNumber(contract.price,{ style: 'currency', currency: 'EUR' })}
                 </Typography>
               </Box>
-              <Box display="flex" flexDirection="column" alignItems="flex-end" gap={1}>
+              <Box display="flex" flexDirection="column" alignItems="flex-end" gap={4}>
                  <Chip
                     label={intl.formatMessage({ id: `customer.common.widgets.contracts.status.${contract.status}`, defaultMessage: contract.status })}
                     color={contract.status === 'active' ? 'success' : 'warning'}
                     size="small"
                     variant="outlined"
                  />
-                 <Button variant="text" size="small" color="secondary" sx={{ textDecoration: 'underline' }}>
+                 <Button variant="contained" size="small" color="secondary" sx={{ textDecoration: 'underline' }}>
                    {intl.formatMessage({ id: 'customer.common.widgets.contracts.details', defaultMessage: 'Details' })}
                  </Button>
               </Box>
