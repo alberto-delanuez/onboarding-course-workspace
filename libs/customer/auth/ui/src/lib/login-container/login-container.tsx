@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { DIContainer } from '@onboarding-course/customer-common-di';
 import { useLoginReducer } from './login-reducer/use-login-reducer';
 import { Button, Stack, Typography, TextField, Box, Alert } from '@mui/material';
-import { LoginState } from './login-reducer/reducer.types';
+import { LoginState } from './login-reducer/use-login-reducer.types';
 import { useMemo } from 'react';
 
 

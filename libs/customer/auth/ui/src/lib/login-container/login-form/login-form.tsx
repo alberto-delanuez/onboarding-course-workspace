@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { LoginDto } from '@onboarding-course/customer-auth-domain';
 import { useIntl } from 'react-intl';
 import {  Controller } from 'react-hook-form';
-import { useLoginForm } from './form/useLoginForm';
+import { useLoginForm } from './form/use-login-form';
 
 
 export interface LoginFormProps {
