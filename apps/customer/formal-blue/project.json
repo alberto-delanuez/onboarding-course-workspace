@@ -1,0 +1,7 @@
+{
+  "name": "@onboarding-course/formal-blue",
+  "targets": {
+    "pre-commit": {}
+  }
+}
+

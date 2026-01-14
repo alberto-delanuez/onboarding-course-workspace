@@ -3,10 +3,16 @@
     "include": [],
     "references": [
         {
-            "path": "../../../libs/customer/auth/ui"
+            "path": "../../../libs/customer/common/utils"
         },
         {
-            "path": "../../../libs/customer/themes/blue"
+            "path": "../../../libs/customer/common/di"
+        },
+        {
+            "path": "../../../libs/customer/profile/infrastructure"
+        },
+        {
+            "path": "../../../libs/customer/profile/application"
         },
         {
             "path": "../../../libs/customer/profile/ui"
@@ -15,7 +21,13 @@
             "path": "../../../libs/customer/common/ui"
         },
         {
-            "path": "../../../libs/customer/common/utils"
+            "path": "../../../libs/customer/auth/ui"
+        },
+        {
+            "path": "../../../libs/customer/themes/base"
+        },
+        {
+            "path": "../../../libs/customer/themes/blue"
         },
         {
             "path": "./tsconfig.app.json"

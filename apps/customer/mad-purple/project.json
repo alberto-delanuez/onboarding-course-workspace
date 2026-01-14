@@ -1,0 +1,7 @@
+{
+  "name": "@onboarding-course/mad-purple",
+  "targets": {
+    "pre-commit": {}
+  }
+}
+

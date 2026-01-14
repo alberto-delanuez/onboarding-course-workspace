@@ -83,7 +83,7 @@
     "pre-commit": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["nx lint {projectName}", "nx test {projectName}", "tsc --noEmit"],
+        "commands": ["nx lint {projectName}", "nx test {projectName} --passWithNoTests", "tsc --noEmit"],
         "parallel": false
       }
     }
@@ -107,5 +107,8 @@
     }
   },
   "nxCloudId": "695e6ca15d6713612ba0e5e1",
-  "packageManager": "pnpm"
+  "packageManager": "pnpm",
+  "sync": {
+    "applyChanges": true
+  }
 }
