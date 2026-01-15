@@ -10,7 +10,8 @@ import {
     LoginUseCaseToken
 } from '@onboarding-course/customer-common-di';
 import { LoginUseCase } from '@onboarding-course/customer-auth-application';
-import { AuthHttpRepository } from '@onboarding-course/customer-auth-infrastructure';
+import { AuthHttpRepository, mockLoginError } from '@onboarding-course/customer-auth-infrastructure';
+import { server } from '../../test-setup';
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -77,6 +78,32 @@ describe('Login integration', () => {
                 'token'
             );
             expect(screen.getByTestId('dashboard')).toBeInTheDocument();
+        });
+    });
+
+    it('should show error message when login fails', async () => {
+        server.use(mockLoginError);
+        const user = userEvent.setup();
+
+        render(<LoginContainer />, { wrapper: Wrapper });
+
+        const emailInput = screen.getByTestId('email').querySelector('input');
+        const passwordInput =
+            screen.getByTestId('password').querySelector('input');
+        const submitButton = screen.getByTestId('submit');
+
+        if (!emailInput || !passwordInput) {
+            throw new Error('Inputs not found');
+        }
+
+        await user.type(emailInput, 'user.test@example.com');
+        await user.type(passwordInput, 'wrongpassword');
+        await user.click(submitButton);
+
+        await waitFor(() => {
+            expect(
+                screen.getByText(/Invalid credentials or login failed/i)
+            ).toBeInTheDocument();
         });
     });
 });
