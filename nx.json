@@ -86,6 +86,12 @@
         "commands": ["nx lint {projectName}", "nx test {projectName} --passWithNoTests", "tsc --noEmit"],
         "parallel": false
       }
+    },
+    "generate-version": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tools/scripts/generate-version.sh {projectName} dist/apps/customer/{projectName}/version.json"
+      }
     }
   },
   "generators": {
