@@ -4,8 +4,21 @@
     "pre-commit": {},
     "generate-version": {
       "executor": "nx:run-commands",
+      "outputs": ["{options.outputPath}/version.json"],
       "options": {
-        "command": "tools/scripts/generate-version.sh formal-blue dist/apps/customer/formal-blue"
+        "command": "tools/scripts/generate-version.sh formal-blue dist/apps/customer/formal-blue",
+        "outputPath": "dist/apps/customer/formal-blue"
+      }
+    },
+    "analyze": {
+      "executor": "nx:run-commands",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "command": "nx build formal-blue --configuration=production --skip-nx-cache",
+        "outputPath": "dist/apps/customer/formal-blue",
+        "env": {
+          "ANALYZE": "true"
+        }
       }
     },
     "build": {
