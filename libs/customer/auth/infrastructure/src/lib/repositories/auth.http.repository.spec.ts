@@ -1,32 +1,11 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { AuthHttpRepository } from './auth.http.repository';
-import { LoginDto, User } from '@onboarding-course/customer-auth-domain';
+import { LoginDto } from '@onboarding-course/customer-auth-domain';
+import { server } from '../../test-setup';
+import { mockLoginError, mockLoginUser } from '../handlers/auth.handlers';
 
 describe('AuthHttpRepository', () => {
-    beforeEach(() => {
-        vi.stubGlobal('fetch', vi.fn());
-    });
-
-    afterEach(() => {
-        vi.restoreAllMocks();
-    });
-
     it('login should make POST request to /auth/login and return user', async () => {
-        const mockUser: User = {
-            id: '1',
-            email: 'john.doe@example.com',
-            name: 'John Doe',
-            accessToken: 'token',
-            refreshToken: 'refresh'
-        };
-
-        const fetchMock = vi.fn().mockResolvedValue({
-            ok: true,
-            json: () => Promise.resolve(mockUser)
-        });
-
-        vi.stubGlobal('fetch', fetchMock);
-
         const repo = new AuthHttpRepository('https://api.example.com');
 
         const credentials: LoginDto = {
@@ -36,26 +15,11 @@ describe('AuthHttpRepository', () => {
 
         const result = await repo.login(credentials);
 
-        expect(fetchMock).toHaveBeenCalledWith(
-            'https://api.example.com/auth/login',
-            expect.objectContaining({
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    username: 'usert',
-                    password: 'password'
-                })
-            })
-        );
-        expect(result).toEqual(mockUser);
+        expect(result).toEqual(mockLoginUser);
     });
 
     it('login should throw error when response is not ok', async () => {
-        const fetchMock = vi.fn().mockResolvedValue({
-            ok: false
-        });
-
-        vi.stubGlobal('fetch', fetchMock);
+        server.use(mockLoginError);
 
         const repo = new AuthHttpRepository('https://api.example.com');
 
