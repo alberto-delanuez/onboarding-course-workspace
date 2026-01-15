@@ -1,9 +1,10 @@
 import { configure } from '@testing-library/react';
 import { vi, beforeAll, afterAll, afterEach } from 'vitest';
 import { setupServer } from 'msw/node';
-import { http, HttpResponse } from 'msw';
+import { mockGetProfileSuccess, mockUpdateProfileSuccess } from '@onboarding-course/customer-profile-infrastructure';
 
 import '@testing-library/jest-dom';
+
 configure({ testIdAttribute: 'data-hook' });
 
 const localStorageMock = {
@@ -20,16 +21,9 @@ Object.defineProperty(window, 'localStorage', {
     writable: true
 });
 
-const mockLoginUser = {
-    id: '1',
-    email: 'user.test@example.com',
-    name: 'User Test',
-    accessToken: 'token',
-    refreshToken: 'refresh'
-};
-
 export const server = setupServer(
-    http.post('*/auth/login', () => HttpResponse.json(mockLoginUser))
+    mockGetProfileSuccess,
+    mockUpdateProfileSuccess
 );
 
 beforeAll(() => {

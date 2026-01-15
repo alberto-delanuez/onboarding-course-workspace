@@ -27,7 +27,7 @@ export const ProfileEditForm: React.FC<ProfileEditFormProps> = ({
   return (
     <Paper elevation={3} sx={{ p: 4, maxWidth: 600, mx: 'auto' }}>
       <Typography variant="h5" component="h1" gutterBottom>
-        {intl.formatMessage({ id: 'customer.profile.editProfile' })}
+        {intl.formatMessage({ id: 'customer.profile.editProfile', defaultMessage: 'Edit Profile' })}
       </Typography>
 
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -37,7 +37,8 @@ export const ProfileEditForm: React.FC<ProfileEditFormProps> = ({
           render={({ field }) => (
             <TextField
               {...field}
-              label={intl.formatMessage({ id: 'customer.edit-profile.firstName' })}
+              type="text"
+              label={intl.formatMessage({ id: 'customer.edit-profile.firstName', defaultMessage: 'First Name' })}
               fullWidth
               margin="normal"
               disabled={isSubmitting}
@@ -56,7 +57,8 @@ export const ProfileEditForm: React.FC<ProfileEditFormProps> = ({
           render={({ field }) => (
             <TextField
               {...field}
-              label={intl.formatMessage({ id: 'customer.edit-profile.lastName' })}
+              type="text"
+              label={intl.formatMessage({ id: 'customer.edit-profile.lastName', defaultMessage: 'Last Name' })}
               fullWidth
               margin="normal"
               disabled={isSubmitting}
@@ -75,7 +77,8 @@ export const ProfileEditForm: React.FC<ProfileEditFormProps> = ({
           render={({ field }) => (
             <TextField
               {...field}
-              label={intl.formatMessage({ id: 'customer.edit-profile.phone' })}
+              type="tel"
+              label={intl.formatMessage({ id: 'customer.edit-profile.phone', defaultMessage: 'Phone' })}
               fullWidth
               margin="normal"
               disabled={isSubmitting}
@@ -94,7 +97,8 @@ export const ProfileEditForm: React.FC<ProfileEditFormProps> = ({
           render={({ field }) => (
             <TextField
               {...field}
-              label={intl.formatMessage({ id: 'customer.edit-profile.address' })}
+              type="text"
+              label={intl.formatMessage({ id: 'customer.edit-profile.address', defaultMessage: 'Address' })}
               fullWidth
               margin="normal"
               disabled={isSubmitting}
@@ -108,7 +112,8 @@ export const ProfileEditForm: React.FC<ProfileEditFormProps> = ({
           render={({ field }) => (
             <TextField
               {...field}
-              label={intl.formatMessage({ id: 'customer.edit-profile.city' })}
+              type="text"
+              label={intl.formatMessage({ id: 'customer.edit-profile.city', defaultMessage: 'City' })}
               fullWidth
               margin="normal"
               disabled={isSubmitting}
@@ -122,7 +127,8 @@ export const ProfileEditForm: React.FC<ProfileEditFormProps> = ({
           render={({ field }) => (
             <TextField
               {...field}
-              label={intl.formatMessage({ id: 'customer.edit-profile.state' })}
+              type="text"
+              label={intl.formatMessage({ id: 'customer.edit-profile.state', defaultMessage: 'State' })}
               fullWidth
               margin="normal"             
               disabled={isSubmitting}
@@ -136,7 +142,8 @@ export const ProfileEditForm: React.FC<ProfileEditFormProps> = ({
           render={({ field }) => (
             <TextField
               {...field}
-              label={intl.formatMessage({ id: 'customer.edit-profile.postalCode' })}
+              type="text"
+              label={intl.formatMessage({ id: 'customer.edit-profile.postalCode', defaultMessage: 'Postal Code' })}
               fullWidth
               margin="normal"
               disabled={isSubmitting}
@@ -152,7 +159,7 @@ export const ProfileEditForm: React.FC<ProfileEditFormProps> = ({
             disabled={isSubmitting}
             data-hook="cancel"
           >
-            {intl.formatMessage({ id: 'customer.edit-profile.cancel' })}
+            {intl.formatMessage({ id: 'customer.edit-profile.cancel', defaultMessage: 'Cancel' })}
           </Button>
           <Button
             type="submit"
@@ -161,7 +168,7 @@ export const ProfileEditForm: React.FC<ProfileEditFormProps> = ({
             disabled={isSubmitting}
             data-hook="submit"
           >
-            {intl.formatMessage({ id: 'customer.edit-profile.saveChanges' })}
+            {intl.formatMessage({ id: 'customer.edit-profile.saveChanges', defaultMessage: 'Save Changes' })}
           </Button>
         </Box>
       </form>
