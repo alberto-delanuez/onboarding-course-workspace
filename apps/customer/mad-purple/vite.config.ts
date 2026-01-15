@@ -88,8 +88,38 @@ export default defineConfig(() => {
             outDir: './dist',
             emptyOutDir: false,
             reportCompressedSize: true,
+            chunkSizeWarningLimit: 600,
             commonjsOptions: {
                 transformMixedEsModules: true
+            },
+            rollupOptions: {
+                output: {
+                    manualChunks(id) {
+                        if (id.includes('node_modules')) {
+                            if (
+                                id.includes('react') ||
+                                id.includes('react-dom') ||
+                                id.includes('react-router-dom')
+                            ) {
+                                return 'react-vendor';
+                            }
+                            if (
+                                id.includes('@mui') ||
+                                id.includes('@emotion')
+                            ) {
+                                return 'mui-vendor';
+                            }
+                            if (
+                                id.includes('@tanstack') ||
+                                id.includes('react-intl') ||
+                                id.includes('react-hook-form') ||
+                                id.includes('zod')
+                            ) {
+                                return 'utils-vendor';
+                            }
+                        }
+                    }
+                }
             }
         },
         test: {
