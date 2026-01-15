@@ -44,7 +44,7 @@ export const ProfileContainer = () => {
   if (isError || !user) {
     return (
       <Alert severity="error">
-        {intl.formatMessage({ id: 'customer.profile.error.loading' })}
+        {intl.formatMessage({ id: 'customer.profile.error.loading', defaultMessage: 'Error loading profile' })}
       </Alert>
     );
   }

@@ -36,7 +36,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
               <TextField
                 {...field}
                 label={intl.formatMessage({ id: 'customer.auth.login.email', defaultMessage: 'Email' })}
-                type="string"
+                type="text"
                 fullWidth
                 margin="normal"            
                 disabled={isSubmitting}

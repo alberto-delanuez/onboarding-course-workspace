@@ -9,37 +9,43 @@ const createProfileFormSchema = (intl: IntlShape) =>
         firstName: z
             .string(
                 intl.formatMessage({
-                    id: 'customer.edit-profile.firstNameRequired'
+                    id: 'customer.edit-profile.firstNameRequired',
+                    defaultMessage: 'First Name is required'
                 })
             )
             .min(
                 1,
                 intl.formatMessage({
-                    id: 'customer.edit-profile.firstNameRequired'
+                    id: 'customer.edit-profile.firstNameRequired',
+                    defaultMessage: 'First Name is required'
                 })
             ),
         lastName: z
             .string(
                 intl.formatMessage({
-                    id: 'customer.edit-profile.lastNameRequired'
+                    id: 'customer.edit-profile.lastNameRequired',
+                    defaultMessage: 'Last Name is required'
                 })
             )
             .min(
                 1,
                 intl.formatMessage({
-                    id: 'customer.edit-profile.lastNameRequired'
+                    id: 'customer.edit-profile.lastNameRequired',
+                    defaultMessage: 'Last Name is required'
                 })
             ),
         phone: z
             .string(
                 intl.formatMessage({
-                    id: 'customer.edit-profile.phoneRequired'
+                    id: 'customer.edit-profile.phoneRequired',
+                    defaultMessage: 'Phone is required'
                 })
             )
             .min(
                 1,
                 intl.formatMessage({
-                    id: 'customer.edit-profile.phoneRequired'
+                    id: 'customer.edit-profile.phoneRequired',
+                    defaultMessage: 'Phone is required'
                 })
             ),
         address: z.object({
