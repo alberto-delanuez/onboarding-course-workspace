@@ -46,7 +46,6 @@ export const LoginContainer: React.FC<LoginContainerProps> = ({ login = { enable
         onSuccess: ({accessToken}) => handleSuccess(accessToken),
         onError: () => {
           dispatch({ type: 'SET_ERROR', payload: 'Invalid credentials or login failed' });
-          throw new Error('Invalid credentials');
         }
   });
 
@@ -54,7 +53,6 @@ export const LoginContainer: React.FC<LoginContainerProps> = ({ login = { enable
         onSuccess: ({accessToken}) => handleSuccess(accessToken),
         onError: () => {
           dispatch({ type: 'SET_ERROR', payload: 'Social login failed' });
-          throw new Error('Social login failed');
         }
   });
 
@@ -64,7 +62,6 @@ export const LoginContainer: React.FC<LoginContainerProps> = ({ login = { enable
         },
         onError: () => {
             dispatch({ type: 'SET_ERROR', payload: 'Failed to send OTP code' });
-            throw new Error('Failed to send OTP code');
         }
   });
 
@@ -72,7 +69,6 @@ export const LoginContainer: React.FC<LoginContainerProps> = ({ login = { enable
         onSuccess: ({accessToken}) => handleSuccess(accessToken),
         onError: () => {
             dispatch({ type: 'SET_ERROR', payload: 'Invalid OTP code' });
-            throw new Error('Invalid OTP code');
         }
   });
 
@@ -83,7 +79,6 @@ export const LoginContainer: React.FC<LoginContainerProps> = ({ login = { enable
       await loginAsync(credentials);
      
     } catch (err) {
-      console.error('Login error:', err);
       dispatch({ type: 'SET_ERROR', payload: 'Invalid credentials or login failed' });
     }
   };
@@ -92,7 +87,6 @@ export const LoginContainer: React.FC<LoginContainerProps> = ({ login = { enable
     try {
       await socialLoginAsync(provider);
     } catch (err) {
-      console.error('Social login error:', err);
       dispatch({ type: 'SET_ERROR', payload: `Social login with ${provider} failed` });
     }
   };
@@ -106,8 +100,7 @@ export const LoginContainer: React.FC<LoginContainerProps> = ({ login = { enable
       }
       await requestOtpAsync(email);
     } catch (err) {
-      console.error('Request OTP error:', err);
-      // Error handling is done in mutation onError
+      dispatch({ type: 'SET_ERROR', payload: 'Failed to send OTP code' });
     }
   };
 
@@ -120,7 +113,7 @@ export const LoginContainer: React.FC<LoginContainerProps> = ({ login = { enable
       }
       await loginWithOtpAsync({ email, code });
     } catch (err) {
-      console.error('Verify OTP error:', err);
+      dispatch({ type: 'SET_ERROR', payload: 'Invalid OTP code' });
       // Error handling is done in mutation onError
     }
   };
@@ -136,9 +129,6 @@ export const LoginContainer: React.FC<LoginContainerProps> = ({ login = { enable
       {/* PASSWORD MODE */}
       {mode === 'PASSWORD' && login.enabled && (
         <>
-          <Typography variant="h5" gutterBottom align="center">
-            {intl.formatMessage({ id: 'login.title', defaultMessage: 'Login' })}
-          </Typography>
           <LoginForm onSubmit={handleLogin} />
           
           {otp.enabled && (

@@ -2,7 +2,7 @@ import { Box, Button, TextField, Typography, Paper, Link as MuiLink, Alert } fro
 import { Link } from 'react-router-dom';
 import { LoginDto } from '@onboarding-course/customer-auth-domain';
 import { useIntl } from 'react-intl';
-import {  Controller } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 import { useLoginForm } from './form/use-login-form';
 
 
@@ -79,11 +79,11 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
             disabled={isSubmitting}
             data-hook="submit"
           >
-            {isSubmitting ? intl.formatMessage({ id: 'customer.auth.login.loading', defaultMessage: 'Logging in...' }) : intl.formatMessage({ id: 'customer.auth.login.submit', defaultMessage: 'Login' })}
+            {isSubmitting ? intl.formatMessage({ id: 'customer.auth.login.loading', defaultMessage: 'Logging in...' }) : intl.formatMessage({ id: 'customer.auth.login.submit', defaultMessage: 'Submit' })}
           </Button>
           <Box mt={2} textAlign="center">
             <Typography variant="body2">
-              {intl.formatMessage({ id: 'customer.auth.login.register.link', defaultMessage: "Don't have an account? {{link}}"}, { link: <MuiLink component={Link} to="/register">{intl.formatMessage({ id: 'customer.auth.login.register', defaultMessage: 'Register' }) }</MuiLink> } )}
+              {intl.formatMessage({ id: 'customer.auth.login.register.link', defaultMessage: "Don't have an account?" }, { link: <MuiLink component={Link} to="/register">{intl.formatMessage({ id: 'customer.auth.login.register', defaultMessage: 'Register' }) }</MuiLink> } )}
             </Typography>
           </Box>
         </form>

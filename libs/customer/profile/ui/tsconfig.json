@@ -9,12 +9,6 @@
             "path": "../domain"
         },
         {
-            "path": "../application"
-        },
-        {
-            "path": "../infrastructure"
-        },
-        {
             "path": "../../common/ui"
         },
         {
