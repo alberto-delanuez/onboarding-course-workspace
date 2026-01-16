@@ -2,8 +2,13 @@ import { render, screen, waitFor } from '@testing-library/react';
 import { ProfileContainer } from './profile-container';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { IntlProvider } from 'react-intl';
-import { DIContainer, GetProfileUseCaseToken, UpdateProfileUseCaseToken } from '@onboarding-course/customer-common-di';
-import { GetProfileUseCase, UpdateProfileUseCase } from '@onboarding-course/customer-profile-application';
+import { DIContainer } from '@onboarding-course/customer-common-di';
+import {
+    GetProfileUseCaseToken,
+    UpdateProfileUseCaseToken,
+    GetProfileUseCase,
+    UpdateProfileUseCase
+} from '@onboarding-course/customer-profile-application';
 import { ProfileHttpRepository, mockGetProfileError } from '@onboarding-course/customer-profile-infrastructure';
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { server } from '../../test-setup';

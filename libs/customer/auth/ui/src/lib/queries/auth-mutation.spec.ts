@@ -1,12 +1,12 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { authMutation } from './auth-mutation';
+import { DIContainer } from '@onboarding-course/customer-common-di';
 import {
-    DIContainer,
     LoginUseCaseToken,
     SocialLoginUseCaseToken,
     RequestOtpUseCaseToken,
     LoginWithOtpUseCaseToken
-} from '@onboarding-course/customer-common-di';
+} from '@onboarding-course/customer-auth-application';
 
 describe('authMutation', () => {
     beforeEach(() => {

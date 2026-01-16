@@ -1,16 +1,18 @@
 import { DIContainer } from '@onboarding-course/customer-common-di';
-import { 
-  AuthRepositoryToken, 
-  LoginUseCaseToken, 
-  RegisterUseCaseToken, 
-  VerifyUseCaseToken, 
-  SocialLoginUseCaseToken, 
-  RequestOtpUseCaseToken, 
-  LoginWithOtpUseCaseToken, 
-  ProfileRepositoryToken, 
-  GetProfileUseCaseToken, 
+import {
+  AuthRepositoryToken,
+  LoginUseCaseToken,
+  RegisterUseCaseToken,
+  VerifyUseCaseToken,
+  SocialLoginUseCaseToken,
+  RequestOtpUseCaseToken,
+  LoginWithOtpUseCaseToken
+} from '@onboarding-course/customer-auth-application';
+import {
+  ProfileRepositoryToken,
+  GetProfileUseCaseToken,
   UpdateProfileUseCaseToken
-} from '@onboarding-course/customer-common-di';
+} from '@onboarding-course/customer-profile-application';
 
 import { 
   LoginUseCase, 
