@@ -8,14 +8,6 @@ import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 export default defineConfig(() => ({
   root: __dirname,
   cacheDir: '../../../../node_modules/.vite/libs/customer/themes/base',
-  resolve: {
-    alias: {
-      '@onboarding-course/customer-themes-base': path.resolve(
-        __dirname,
-        '../base/src/index.ts'
-      ),
-    },
-  },
   plugins: [
     react(),
     nxViteTsPaths(),

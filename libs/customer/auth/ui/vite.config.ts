@@ -3,32 +3,14 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
 import * as path from 'path';
+import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 
 export default defineConfig(() => ({
     root: __dirname,
     cacheDir: '../../../../node_modules/.vite/libs/customer/auth/ui',
-    resolve: {
-        alias: {
-            '@onboarding-course/customer-auth-domain': path.resolve(
-                __dirname,
-                '../domain/src/index.ts'
-            ),
-            '@onboarding-course/customer-auth-application': path.resolve(
-                __dirname,
-                '../application/src/index.ts'
-            ),
-            '@onboarding-course/customer-auth-infrastructure': path.resolve(
-                __dirname,
-                '../infrastructure/src/index.ts'
-            ),
-            '@onboarding-course/customer-common-di': path.resolve(
-                __dirname,
-                '../../common/di/src/index.ts'
-            )
-        }
-    },
     plugins: [
         react(),
+        nxViteTsPaths(),
         dts({
             entryRoot: 'src',
             tsconfigPath: path.join(__dirname, 'tsconfig.lib.json')

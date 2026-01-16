@@ -1,8 +1,11 @@
 import { renderHook, waitFor } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useUserProfileQuery } from './use-profile-query';
-import { DIContainer, GetProfileUseCaseToken } from '@onboarding-course/customer-common-di';
-import { GetProfileUseCase } from '@onboarding-course/customer-profile-application';
+import { DIContainer } from '@onboarding-course/customer-common-di';
+import {
+    GetProfileUseCaseToken,
+    GetProfileUseCase
+} from '@onboarding-course/customer-profile-application';
 import { ProfileHttpRepository } from '@onboarding-course/customer-profile-infrastructure';
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 

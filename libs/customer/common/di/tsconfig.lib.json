@@ -21,18 +21,5 @@
         "eslint.config.mjs"
     ],
     "include": ["src/**/*.ts"],
-    "references": [
-        {
-            "path": "../../profile/application/tsconfig.lib.json"
-        },
-        {
-            "path": "../../profile/domain/tsconfig.lib.json"
-        },
-        {
-            "path": "../../auth/application/tsconfig.lib.json"
-        },
-        {
-            "path": "../../auth/domain/tsconfig.lib.json"
-        }
-    ]
+    "references": []
 }

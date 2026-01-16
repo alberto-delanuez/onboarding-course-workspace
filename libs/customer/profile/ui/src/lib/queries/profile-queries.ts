@@ -1,9 +1,9 @@
 import { mutationOptions, queryOptions } from '@tanstack/react-query';
+import { DIContainer } from '@onboarding-course/customer-common-di';
 import {
     GetProfileUseCaseToken,
-    UpdateProfileUseCaseToken,
-    DIContainer
-} from '@onboarding-course/customer-common-di';
+    UpdateProfileUseCaseToken
+} from '@onboarding-course/customer-profile-application';
 import { UpdateProfileDto } from '@onboarding-course/customer-profile-domain';
 
 export const profileQueries = {
