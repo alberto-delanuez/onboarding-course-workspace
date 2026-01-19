@@ -5,23 +5,24 @@ import { LoginContainer } from './login-container';
 import { IntlProvider } from 'react-intl';
 import { MemoryRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { DIContainer, LoginUseCaseToken } from '@onboarding-course/customer-common-di';
+import { DIContainer } from '@onboarding-course/customer-common-di';
+import { LoginUseCaseToken } from '@onboarding-course/customer-auth-application';
 
 const queryClient = new QueryClient({
-    defaultOptions: {
-        queries: {
-            retry: false,
-        },
-        mutations: {
-            retry: false,
-        }
+  defaultOptions: {
+    queries: {
+      retry: false,
+    },
+    mutations: {
+      retry: false,
     }
+  }
 });
 
 const Wrapper = ({ children }: { children: React.ReactNode }) => (
   <QueryClientProvider client={queryClient}>
     <IntlProvider locale="en">
-        <MemoryRouter>{children}</MemoryRouter>
+      <MemoryRouter>{children}</MemoryRouter>
     </IntlProvider>
   </QueryClientProvider>
 );
@@ -31,7 +32,7 @@ describe('LoginContainer', () => {
 
   beforeEach(() => {
     const mockLoginUseCase = {
-        execute: mockLoginExecute
+      execute: mockLoginExecute
     };
     DIContainer.set(LoginUseCaseToken, mockLoginUseCase as any);
   });
@@ -75,9 +76,9 @@ describe('LoginContainer', () => {
 
   it('should show error message on login failure', async () => {
     mockLoginExecute.mockRejectedValue(new Error('Invalid credentials'));
-    
+
     const user = userEvent.setup();
-    
+
     render(<LoginContainer />, { wrapper: Wrapper });
 
     const emailInput = screen.getByTestId('email').querySelector('input');
@@ -91,8 +92,8 @@ describe('LoginContainer', () => {
     await user.click(submitButton);
 
     await waitFor(() => {
-        const alert = screen.getByRole('alert');
-        expect(alert).toHaveTextContent('Invalid credentials or login failed');
+      const alert = screen.getByRole('alert');
+      expect(alert).toHaveTextContent('Invalid credentials or login failed');
     });
   });
 });

@@ -1,4 +1,4 @@
-import { renderHook, waitFor } from '@testing-library/react';
+import { renderHook } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useUpdateUserProfileMutation } from './use-update-profile';
 import { DIContainer } from '@onboarding-course/customer-common-di';

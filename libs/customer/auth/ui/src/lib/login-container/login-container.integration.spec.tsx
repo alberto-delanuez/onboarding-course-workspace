@@ -6,10 +6,9 @@ import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { LoginContainer } from './login-container';
 import {
-    DIContainer,
-    LoginUseCaseToken
+    DIContainer
 } from '@onboarding-course/customer-common-di';
-import { LoginUseCase } from '@onboarding-course/customer-auth-application';
+import { LoginUseCase, LoginUseCaseToken } from '@onboarding-course/customer-auth-application';
 import { AuthHttpRepository, mockLoginError } from '@onboarding-course/customer-auth-infrastructure';
 import { server } from '../../test-setup';
 

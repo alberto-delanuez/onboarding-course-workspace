@@ -35,17 +35,17 @@ describe('ProfileContainer', () => {
         const profileRepo = new ProfileHttpRepository('https://api.example.com');
         const getProfileUseCase = new GetProfileUseCase(profileRepo);
         const updateProfileUseCase = new UpdateProfileUseCase(profileRepo);
-        
+
         DIContainer.set(GetProfileUseCaseToken, getProfileUseCase);
         DIContainer.set(UpdateProfileUseCaseToken, updateProfileUseCase);
-        
-        localStorage.setItem('token', 'token');
+
+        window.localStorage.setItem('token', 'token');
     });
 
     afterEach(() => {
         DIContainer.clear();
         queryClient.clear();
-        localStorage.clear();
+        window.localStorage.clear();
         server.resetHandlers();
     });
 

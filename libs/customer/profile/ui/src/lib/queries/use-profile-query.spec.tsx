@@ -27,13 +27,13 @@ describe('useUserProfileQuery', () => {
         const profileRepo = new ProfileHttpRepository('https://api.example.com');
         const getProfileUseCase = new GetProfileUseCase(profileRepo);
         DIContainer.set(GetProfileUseCaseToken, getProfileUseCase);
-        localStorage.setItem('token', 'token');
+        window.localStorage.setItem('token', 'token');
     });
 
     afterEach(() => {
         DIContainer.clear();
         queryClient.clear();
-        localStorage.clear();
+        window.localStorage.clear();
     });
 
     it('should fetch user profile successfully', async () => {

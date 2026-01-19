@@ -4,8 +4,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useLoginMutation } from './use-login-mutation';
 import {
     DIContainer,
-    LoginUseCaseToken
 } from '@onboarding-course/customer-common-di';
+import { LoginUseCaseToken } from '@onboarding-course/customer-auth-application';
 import { type ReactNode } from 'react';
 
 describe('useLoginMutation', () => {

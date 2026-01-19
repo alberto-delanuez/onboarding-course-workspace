@@ -267,3 +267,31 @@ export default defineConfig({
 
 -   **Authentication:** The external API expects a `username` instead of an `email` for login. A utility function `parseEmailToUsername` was implemented in the repository to adapt the input.
 -   **OTP & Mad Purple:** Since `mad-purple` relies solely on OTP login (which is not supported by DummyJSON), we simulate the process by hardcoding a valid JWT token in `libs/customer/auth/infrastructure/src/lib/repositories/auth.http.repository.ts` (method `loginWithOtp`). This allows the application to proceed to authenticated routes (like `/profile`) by verifying a real token against the DummyJSON `/auth/me` endpoint.
+
+## 9. Nx Tags (Type & Scope)
+
+-   Propósito: organizar dependencias y aplicar límites de módulos mediante tags en Nx.
+-   Alcances disponibles: `scope:customer`, `scope:common`.
+-   Tipos disponibles: `type:domain`, `type:application`, `type:infrastructure`, `type:ui`, `type:common`.
+-   Reglas (resumen, ver `eslint.config.mjs`):
+    -   `scope:customer` solo depende de `scope:common` y `scope:customer`.
+    -   `type:ui` puede depender de `domain`, `application`, `infrastructure`, `ui`, `common`.
+    -   `type:infrastructure` depende de `domain`, `application`, `common`.
+    -   `type:application` depende de `domain`, `common`.
+-   Asignaciones actuales:
+    -   Apps:
+        -   `@onboarding-course/formal-blue`: sin tags definidos (nx.tags: `[]`)
+        -   `@onboarding-course/mad-purple`: sin tags definidos (nx.tags: `[]`)
+    -   Librerías principales:
+        -   `@onboarding-course/customer-common-ui`: `scope:customer`, `type:ui`
+        -   `@onboarding-course/customer-common-di`: `scope:customer`, `type:common`
+        -   `@onboarding-course/customer-auth-domain`: `scope:customer`, `type:domain`
+        -   `@onboarding-course/customer-auth-application`: `scope:customer`, `type:application`
+        -   `@onboarding-course/customer-auth-infrastructure`: `scope:customer`, `type:infrastructure`
+        -   `@onboarding-course/customer-auth-ui`: `scope:customer`, `type:ui`
+        -   `@onboarding-course/customer-profile-domain`: `scope:customer`, `type:domain`
+        -   `@onboarding-course/customer-profile-application`: `scope:customer`, `type:application`
+        -   `@onboarding-course/customer-profile-infrastructure`: `scope:customer`, `type:infrastructure`
+        -   `@onboarding-course/customer-profile-ui`: `scope:customer`, `type:ui`
+        -   Temas (`base`, `blue`, `purple`): sin tags explícitos
+-
