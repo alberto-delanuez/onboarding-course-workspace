@@ -1,7 +1,8 @@
 import { FC } from 'react';
-import { ContractsWidget } from '@onboarding-course/customer-common-ui';
+import { ContractsWidget, PromotionsWidget } from '@onboarding-course/customer-common-ui';
 import { UserSummaryWidget } from '@onboarding-course/customer-profile-ui';
 import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
 
 const Dashboard: FC = () => {
   return (
@@ -10,7 +11,10 @@ const Dashboard: FC = () => {
         <ContractsWidget />
       </Grid>
       <Grid size={4}>
-         <UserSummaryWidget />
+        <Stack spacing={4}>
+          <UserSummaryWidget />
+          <PromotionsWidget />
+        </Stack>
       </Grid>
     </Grid>
   );

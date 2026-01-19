@@ -67,7 +67,10 @@
         "customer.login.with.social": "Iniciar sesión con redes sociales",
         "customer.dashboard.user.error": "Error al cargar información del usuario",
         "customer.dashboard.user.noPhone": "No se ha proporcionado número de teléfono",
-        "customer.profile.error.loading": "Error al cargar perfil. Por favor, inténtelo de nuevo más tarde."
+        "customer.profile.error.loading": "Error al cargar perfil. Por favor, inténtelo de nuevo más tarde.",
+        "customer.common.widgets.promotions.title": "Promociones",
+        "customer.common.widgets.promotions.description": "Comprueba nuestras últimas promociones y descuentos.",
+        "customer.common.widgets.promotions.interested": "Estoy interesado"
     },
     "en": {
         "customer.auth.login.title": "Login",
@@ -137,7 +140,12 @@
         "customer.login.with.social": "Login with social networks",
         "customer.dashboard.user.error": "Error loading user information",
         "customer.dashboard.user.noPhone": "No phone number provided",
-        "customer.profile.error.loading": "Error loading profile. Please try again later."
+        "customer.profile.error.loading": "Error loading profile. Please try again later.",
+        "customer.common.widgets.promotions.title": "Promotions",
+        "customer.common.widgets.promotions.description": "Check out our latest promotions and discounts.",
+        "customer.common.widgets.promotions.interested": "I am interested"
+
+
     
     }
 }
