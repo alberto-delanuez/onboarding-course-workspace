@@ -70,7 +70,13 @@
         "customer.profile.error.loading": "Error al cargar perfil. Por favor, inténtelo de nuevo más tarde.",
         "customer.common.widgets.promotions.title": "Promociones",
         "customer.common.widgets.promotions.description": "Comprueba nuestras últimas promociones y descuentos.",
-        "customer.common.widgets.promotions.interested": "Estoy interesado"
+        "customer.common.widgets.promotions.interested": "Estoy interesado",
+        "customer.common.widgets.promotions.item1.title": "Nuevo Router WiFi 6",
+        "customer.common.widgets.promotions.item1.description": "Experimenta velocidades ultra rápidas con nuestro último router.",
+        "customer.common.widgets.promotions.item2.title": "Financia una TV 4K",
+        "customer.common.widgets.promotions.item2.description": "Consigue una nueva TV 4K de 55\" con 0% de interés.",
+        "customer.common.widgets.promotions.item3.title": "Plan de Datos Ilimitados",
+        "customer.common.widgets.promotions.item3.description": "Mejora a datos ilimitados por solo 5€ más al mes."
     },
     "en": {
         "customer.auth.login.title": "Login",
@@ -143,9 +149,12 @@
         "customer.profile.error.loading": "Error loading profile. Please try again later.",
         "customer.common.widgets.promotions.title": "Promotions",
         "customer.common.widgets.promotions.description": "Check out our latest promotions and discounts.",
-        "customer.common.widgets.promotions.interested": "I am interested"
-
-
-    
+        "customer.common.widgets.promotions.interested": "I am interested",
+        "customer.common.widgets.promotions.item1.title": "New WiFi 6 Router",
+        "customer.common.widgets.promotions.item1.description": "Experience ultra-fast speeds with our latest router.",
+        "customer.common.widgets.promotions.item2.title": "Finance a 4K TV",
+        "customer.common.widgets.promotions.item2.description": "Get a brand new 55\" 4K TV with 0% interest.",
+        "customer.common.widgets.promotions.item3.title": "Unlimited Data Plan",
+        "customer.common.widgets.promotions.item3.description": "Upgrade to unlimited data for just €5 more per month."
     }
 }

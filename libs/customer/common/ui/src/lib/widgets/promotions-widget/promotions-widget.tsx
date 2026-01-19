@@ -16,30 +16,38 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 
 export interface Promotion {
   id: string;
-  title: string;
-  description: string;
+  titleKey: string;
+  defaultTitle: string;
+  descriptionKey: string;
+  defaultDescription: string;
   imageUrl: string;
 }
 
 const mockPromotions: Promotion[] = [
   {
     id: '1',
-    title: 'New WiFi 6 Router',
-    description: 'Experience ultra-fast speeds with our latest router.',
+    titleKey: 'customer.common.widgets.promotions.item1.title',
+    defaultTitle: 'New WiFi 6 Router',
+    descriptionKey: 'customer.common.widgets.promotions.item1.description',
+    defaultDescription: 'Experience ultra-fast speeds with our latest router.',
     imageUrl:
       'https://dummyjson.com/image/300x150/008080/ffffff?text=WiFi+6+Router',
   },
   {
     id: '2',
-    title: 'Finance a 4K TV',
-    description: 'Get a brand new 55" 4K TV with 0% interest.',
+    titleKey: 'customer.common.widgets.promotions.item2.title',
+    defaultTitle: 'Finance a 4K TV',
+    descriptionKey: 'customer.common.widgets.promotions.item2.description',
+    defaultDescription: 'Get a brand new 55" 4K TV with 0% interest.',
     imageUrl:
       'https://dummyjson.com/image/300x150/ff7f50/ffffff?text=4K+TV+Promo',
   },
   {
     id: '3',
-    title: 'Unlimited Data Plan',
-    description: 'Upgrade to unlimited data for just €5 more per month.',
+    titleKey: 'customer.common.widgets.promotions.item3.title',
+    defaultTitle: 'Unlimited Data Plan',
+    descriptionKey: 'customer.common.widgets.promotions.item3.description',
+    defaultDescription: 'Upgrade to unlimited data for just €5 more per month.',
     imageUrl:
       'https://dummyjson.com/image/300x150/4682b4/ffffff?text=Unlimited+Data',
   },
@@ -77,14 +85,20 @@ export const PromotionsWidget = () => {
               component="img"
               height="140"
               image={currentPromo.imageUrl}
-              alt={currentPromo.title}
+              alt={currentPromo.defaultTitle}
             />
             <CardContent sx={{ flexGrow: 1 }}>
               <Typography gutterBottom variant="h6" component="div">
-                {currentPromo.title}
+                {intl.formatMessage({
+                  id: currentPromo.titleKey,
+                  defaultMessage: currentPromo.defaultTitle,
+                })}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                {currentPromo.description}
+                {intl.formatMessage({
+                  id: currentPromo.descriptionKey,
+                  defaultMessage: currentPromo.defaultDescription,
+                })}
               </Typography>
             </CardContent>
             <CardActions>
