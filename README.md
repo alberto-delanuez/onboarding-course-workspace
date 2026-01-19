@@ -53,6 +53,15 @@ nx serve mad-purple
 
 Access at: `http://localhost:4201`
 
+## 🔐 Authentication (Mocked Flows)
+
+-   Social Login: The social login flow is mocked. Clicking “Login with social networks” will automatically authenticate without an external provider.
+-   OTP Login: The OTP flow is mocked. Enter the code 123456 to authenticate successfully.
+-   Notes:
+    -   Formal Blue enables social login in addition to standard login.
+    -   Mad Purple uses OTP-only; provide 123456 when prompted.
+    -   Standard Login: The backend (DummyJSON) expects a username instead of an email. The app automatically converts the email to username (parte antes de @) para el login estándar.
+
 ## 🧪 Running Tests
 
 Run unit tests for applications or libraries:
