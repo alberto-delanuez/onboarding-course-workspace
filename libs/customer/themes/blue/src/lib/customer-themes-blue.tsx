@@ -1,8 +1,8 @@
 import { createTheme, ThemeOptions } from '@mui/material/styles';
+import { deepmerge } from '@mui/utils';
 import { baseThemeOptions } from '@onboarding-course/customer-themes-base';
 
 export const blueThemeOptions: ThemeOptions = {
-  ...baseThemeOptions,
   palette: {
     primary: {
       main: '#1976d2', // Blue
@@ -35,7 +35,6 @@ export const blueThemeOptions: ThemeOptions = {
     }
   },
   components: {
-    ...baseThemeOptions.components,
     MuiButton: {
       styleOverrides: {
         root: {
@@ -72,5 +71,4 @@ export const blueThemeOptions: ThemeOptions = {
   },
 };
 
-export const blueTheme = createTheme(blueThemeOptions);
-//export const blueTheme = createTheme(deepmerge(baseThemeOptions, blueThemeOptions));
+export const blueTheme = createTheme(deepmerge(baseThemeOptions, blueThemeOptions));

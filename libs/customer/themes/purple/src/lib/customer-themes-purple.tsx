@@ -1,8 +1,8 @@
 import { createTheme, ThemeOptions } from '@mui/material/styles';
+import { deepmerge } from '@mui/utils';
 import { baseThemeOptions } from '@onboarding-course/customer-themes-base';
 
 export const purpleThemeOptions: ThemeOptions = {
-  ...baseThemeOptions,
   palette: {
     primary: {
       main: '#9c27b0', // Purple
@@ -38,7 +38,6 @@ export const purpleThemeOptions: ThemeOptions = {
     borderRadius: 16,
   },
   components: {
-    ...baseThemeOptions.components,
     MuiCssBaseline: {
       styleOverrides: `
         body {
@@ -93,5 +92,4 @@ export const purpleThemeOptions: ThemeOptions = {
   },
 };
 
-export const purpleTheme = createTheme(purpleThemeOptions);
-//export const purpleTheme = createTheme(deepmerge(baseThemeOptions, purpleThemeOptions));
+export const purpleTheme = createTheme(deepmerge(baseThemeOptions, purpleThemeOptions));

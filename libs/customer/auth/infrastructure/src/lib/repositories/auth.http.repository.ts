@@ -21,7 +21,8 @@ export class AuthHttpRepository implements AuthRepository {
             //HACK: DummyJSON expects the credentials in the body, change email to username
             body: JSON.stringify({
                 username: parseEmailToUsername(credentials.email),
-                password: credentials.password
+                password: credentials.password,
+                expiresInMins: 1440
             })
         });
 
