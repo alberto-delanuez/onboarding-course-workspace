@@ -1,0 +1,19 @@
+{
+  "name": "infra",
+  "targets": {
+    "k8s:deploy": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "bash tools/scripts/k8s-deploy.sh",
+        "parallel": false
+      }
+    },
+    "k8s:port-forward": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "bash tools/scripts/k8s-port-forward.sh",
+        "parallel": false
+      }
+    }
+  }
+}

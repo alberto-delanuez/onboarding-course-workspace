@@ -4,3 +4,4 @@ export * from './lib/widgets/contracts-widget/contracts-widget';
 export * from './lib/widgets/promotions-widget/promotions-widget';
 export * from './lib/error-boundary/error-boundary';
 export * from './lib/editable-content/editable-content';
+export * from './lib/pages/contract-details/contract-details';

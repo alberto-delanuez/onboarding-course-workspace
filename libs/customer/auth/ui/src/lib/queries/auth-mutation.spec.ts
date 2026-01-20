@@ -18,7 +18,7 @@ describe('authMutation', () => {
         DIContainer.set(LoginUseCaseToken, { execute } as any);
 
         const { mutationFn } = authMutation.login();
-        //@ts-ignore
+        //@ts-expect-error for type checking
         await mutationFn({ email: 'user@example.com', password: 'secret' });
 
         expect(execute).toHaveBeenCalledWith({
@@ -32,7 +32,7 @@ describe('authMutation', () => {
         DIContainer.set(SocialLoginUseCaseToken, { execute } as any);
 
         const { mutationFn } = authMutation.socialLogin();
-        //@ts-ignore
+        //@ts-expect-error for type checking
         await mutationFn('google');
 
         expect(execute).toHaveBeenCalledWith('google', 'mock_token');
@@ -43,7 +43,7 @@ describe('authMutation', () => {
         DIContainer.set(RequestOtpUseCaseToken, { execute } as any);
 
         const { mutationFn } = authMutation.requestOtp();
-        //@ts-ignore
+        //@ts-expect-error for type checking
         await mutationFn('user@example.com');
 
         expect(execute).toHaveBeenCalledWith('user@example.com');
@@ -54,7 +54,7 @@ describe('authMutation', () => {
         DIContainer.set(LoginWithOtpUseCaseToken, { execute } as any);
 
         const { mutationFn } = authMutation.loginWithOtp();
-        //@ts-ignore
+        //@ts-expect-error for type checking
         await mutationFn({ email: 'user@example.com', code: '123456' });
 
         expect(execute).toHaveBeenCalledWith('user@example.com', '123456');

@@ -1,5 +1,6 @@
 import { useIntl } from 'react-intl';
 import { Card, CardContent, Typography, Button, Box, Chip, Stack } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 export interface Contract {
   id: string;
@@ -9,7 +10,7 @@ export interface Contract {
   status: 'active' | 'pending';
 }
 
-const mockContracts: Contract[] = [
+export const mockContracts: Contract[] = [
   { id: '1', name: 'Go Max Cinema', type: 'mobile', price: 25.99, status: 'active' },
   { id: '2', name: 'Home Fiber 1Gbps', type: 'fiber', price: 30.00, status: 'active' },
   { id: '3', name: 'Family TV Pack', type: 'tv', price: 10.50, status: 'pending' },
@@ -53,7 +54,14 @@ export const ContractsWidget = () => {
                     size="small"
                     variant="outlined"
                  />
-                 <Button variant="contained" size="small" color="secondary" sx={{ textDecoration: 'underline' }}>
+                 <Button
+                   variant="contained"
+                   size="small"
+                   color="secondary"
+                   sx={{ textDecoration: 'underline' }}
+                   component={Link}
+                   to={`/contracts/${contract.id}`}
+                 >
                    {intl.formatMessage({ id: 'customer.common.widgets.contracts.details', defaultMessage: 'Details' })}
                  </Button>
               </Box>

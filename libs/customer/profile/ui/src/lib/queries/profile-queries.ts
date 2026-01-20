@@ -9,7 +9,7 @@ import { UpdateProfileDto } from '@onboarding-course/customer-profile-domain';
 export const profileQueries = {
     details: () =>
         queryOptions({
-            queryKey: ['PROFILE.DETAILS'],
+            queryKey: ['AUTH.VERIFY'],
             queryFn: () => {
                 const getProfileUseCase = DIContainer.get(
                     GetProfileUseCaseToken

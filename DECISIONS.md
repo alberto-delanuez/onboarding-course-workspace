@@ -256,6 +256,7 @@ export default defineConfig({
 **Decision:** Docker + Helm + Kubernetes.
 
 -   **Docker:** Multi-stage builds to create lightweight production images (serving static files via Nginx).
+-   **Nota módulo 10:** La imagen multi-stage se ha implementado parcialmente. Se usa Nx para realizar la build (generando `dist`) y la imagen de Docker únicamente crea un Nginx que sirve los estáticos desde `dist`. No se ejecuta la build dentro del propio Dockerfile; se externaliza al pipeline de Nx.
 -   **Helm:** Manages Kubernetes manifests as a package, allowing parameterization (values.yaml) for different environments and dynamic image tagging.
 -   **Dynamic Versioning:** `version.json` generated at build time to track Git commit hashes and ensure traceability.
 

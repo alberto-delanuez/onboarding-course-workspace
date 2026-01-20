@@ -7,11 +7,12 @@ import {
     LoginWithOtpUseCaseToken
 } from '@onboarding-course/customer-auth-application';
 import { mutationOptions } from '@tanstack/react-query';
+import { mutationKeys } from './query-keys';
 
 export const authMutation = {
     login: () =>
         mutationOptions({
-            mutationKey: ['AUTH.LOGIN'],
+            mutationKey: mutationKeys.authLogin,
             mutationFn: (credentials: LoginDto) => {
                 const loginUseCase = DIContainer.get(LoginUseCaseToken);
                 return loginUseCase.execute(credentials);
@@ -19,7 +20,7 @@ export const authMutation = {
         }),
     socialLogin: () =>
         mutationOptions({
-            mutationKey: ['AUTH.SOCIAL_LOGIN'],
+            mutationKey: mutationKeys.authSocialLogin,
             mutationFn: (provider: string) => {
                 const socialLoginUseCase = DIContainer.get(
                     SocialLoginUseCaseToken
@@ -29,7 +30,7 @@ export const authMutation = {
         }),
     requestOtp: () =>
         mutationOptions({
-            mutationKey: ['AUTH.REQUEST_OTP'],
+            mutationKey: mutationKeys.authRequestOtp,
             mutationFn: (email: string) => {
                 const requestOtpUseCase = DIContainer.get(
                     RequestOtpUseCaseToken
@@ -39,7 +40,7 @@ export const authMutation = {
         }),
     loginWithOtp: () =>
         mutationOptions({
-            mutationKey: ['AUTH.LOGIN_WITH_OTP'],
+            mutationKey: mutationKeys.authLoginOtp,
             mutationFn: ({ email, code }: { email: string; code: string }) => {
                 const loginWithOtpUseCase = DIContainer.get(
                     LoginWithOtpUseCaseToken

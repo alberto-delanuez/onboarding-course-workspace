@@ -10,8 +10,7 @@
         ],
         "jsx": "react-jsx",
         "lib": ["dom", "dom.iterable", "esnext"],
-        "tsBuildInfoFile": "dist/tsconfig.lib.tsbuildinfo",
-        "rootDir": "src",
+        "tsBuildInfoFile": "dist/tsconfig.lib.tsbuildinfo"
     },
     "exclude": [
         "out-tsc",

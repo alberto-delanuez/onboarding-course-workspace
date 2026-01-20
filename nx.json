@@ -73,7 +73,9 @@
   ],
   "targetDefaults": {
     "test": {
-      "dependsOn": ["^build"]
+      "options": {
+        "passWithNoTests": true
+      }
     },
     "@nx/js:swc": {
       "cache": true,
@@ -82,6 +84,7 @@
     },
     "pre-commit": {
       "executor": "nx:run-commands",
+      "dependsOn": ["^build"],
       "options": {
         "commands": ["nx lint {projectName}", "nx test {projectName} --passWithNoTests", "tsc --noEmit"],
         "parallel": false
@@ -111,6 +114,9 @@
         "unitTestRunner": "none"
       }
     }
+  },
+  "projects": {
+    "infra": "tools/infra"
   },
   "nxCloudId": "695e6ca15d6713612ba0e5e1",
   "packageManager": "pnpm",

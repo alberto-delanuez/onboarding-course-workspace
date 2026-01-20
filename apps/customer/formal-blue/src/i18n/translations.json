@@ -76,7 +76,11 @@
         "customer.common.widgets.promotions.item2.title": "Financia una TV 4K",
         "customer.common.widgets.promotions.item2.description": "Consigue una nueva TV 4K de 55\" con 0% de interés.",
         "customer.common.widgets.promotions.item3.title": "Plan de Datos Ilimitados",
-        "customer.common.widgets.promotions.item3.description": "Mejora a datos ilimitados por solo 5€ más al mes."
+        "customer.common.widgets.promotions.item3.description": "Mejora a datos ilimitados por solo 5€ más al mes.",
+        "customer.common.contract.details.title": "Detalles del contrato",
+        "customer.common.contract.details.back": "Volver al dashboard",
+        "customer.common.contract.details.notFound": "Contrato no encontrado",
+        "customer.common.contract.details.price": "Precio"
     },
     "en": {
         "customer.auth.login.title": "Login",
@@ -155,6 +159,12 @@
         "customer.common.widgets.promotions.item2.title": "Finance a 4K TV",
         "customer.common.widgets.promotions.item2.description": "Get a brand new 55\" 4K TV with 0% interest.",
         "customer.common.widgets.promotions.item3.title": "Unlimited Data Plan",
-        "customer.common.widgets.promotions.item3.description": "Upgrade to unlimited data for just €5 more per month."
+        "customer.common.widgets.promotions.item3.description": "Upgrade to unlimited data for just €5 more per month.",
+        "customer.common.contract.details.title": "Contract Details",
+        "customer.common.contract.details.back": "Back to dashboard",
+        "customer.common.contract.details.notFound": "Contract not found",
+        "customer.common.contract.details.price": "Price"
+
+
     }
 }

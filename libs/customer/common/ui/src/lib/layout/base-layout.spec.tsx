@@ -17,7 +17,9 @@ describe('BaseLayout', () => {
                 <BaseLayout
                   title="My App"
                   currentLocale="en"
-                  onLocaleChange={() => {}}
+                  onLocaleChange={() => {
+                    console.log('Locale changed');
+                  }}
                 />
               }
             >

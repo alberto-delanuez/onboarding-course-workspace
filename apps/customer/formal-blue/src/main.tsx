@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { blueTheme } from '@onboarding-course/customer-themes-blue';
 import { LoginContainer, ProtectedRoute, RegisterContainer } from '@onboarding-course/customer-auth-ui';
-import { BaseLayout, ErrorBoundary } from '@onboarding-course/customer-common-ui';
+import { BaseLayout, ErrorBoundary, ContractDetails } from '@onboarding-course/customer-common-ui';
 import Dashboard from './app/dashboard';
 import { IntlProvider  } from 'react-intl';
 import messages from './i18n/translations.json';
@@ -59,6 +59,7 @@ const App = () => {
                 <Route element={<BaseLayout title={appConfig.title} currentLocale={locale} onLocaleChange={handleLocaleChange} />}>
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/profile" element={<Profile />} />
+                  <Route path="/contracts/:id" element={<ContractDetails />} />
                 </Route>
               </Route>
 

@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { UserProfile } from '@onboarding-course/customer-profile-domain';
 import { UpdateProfileDto } from '@onboarding-course/customer-profile-domain';
 import { profileMutation } from './profile-queries';
+import { queryKeys } from './query-keys';
 
 export const useUpdateUserProfileMutation = () => {
     const queryClient = useQueryClient();
@@ -14,7 +15,7 @@ export const useUpdateUserProfileMutation = () => {
         ...profileMutation.update(),
         onSuccess: () => {
             queryClient.invalidateQueries({
-                queryKey: ['PROFILE.DETAILS']
+                queryKey: queryKeys.profile.details
             });
         }
     }).mutateAsync;
