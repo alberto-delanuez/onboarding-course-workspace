@@ -122,3 +122,40 @@ helm upgrade --install formal-blue ./apps/customer/formal-blue/charts/formal-blu
 │   │   ├── profile/       # Profile Domain (Hexagonal)
 │   │   └── common/        # Shared Utilities & UI
 ```
+
+## 🧱 CI en GitHub Actions
+
+-   Workflow: [.github/workflows/ci.yml](file:///Users/albertodelanuez/Devs/masorange/onboarding-course-workspace/.github/workflows/ci.yml)
+-   Disparadores: `push` y `pull_request`
+-   Pasos clave:
+    -   Checkout optimizado (`filter: tree:0`)
+    -   Setup de pnpm con caché
+    -   Instalación con `pnpm install --frozen-lockfile`
+    -   Ejecución de `nx run-many -t pre-commit build`
+    -   Post-step de autocorrección: `nx fix-ci` (siempre)
+-   Estado: El workflow está pasando en verde
+
+## ☁️ Nx Cloud
+
+-   Integración: configurada en `nx.json` (campo `nxCloudId`)  
+    Referencia: [nx.json](file:///Users/albertodelanuez/Devs/masorange/onboarding-course-workspace/nx.json)
+-   Logs y trazabilidad: se pueden grabar con `nx-cloud record -- <comando>`
+-   Distribución de tareas (opcional):
+    -   Descomenta la línea en el workflow:
+        ```
+        npx nx start-ci-run --distribute-on="3 linux-medium-js" --stop-agents-after="build"
+        ```
+    -   Ubícala antes de la instalación de dependencias
+    -   Ajusta el pool de agentes según tu organización/uso
+
+### Comandos útiles
+
+-   Ejecutar CI localmente:
+    ```bash
+    pnpm install
+    pnpx nx run-many -t pre-commit build
+    ```
+-   Grabar logs en Nx Cloud:
+    ```bash
+    pnpx nx-cloud record -- pnpx nx run-many -t build
+    ```
