@@ -3,9 +3,12 @@ import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 import { ContractsWidget } from './contracts-widget';
+import { MemoryRouter } from 'react-router-dom';
 
 const Wrapper = ({ children }: { children: React.ReactNode }) => (
-  <IntlProvider locale="en">{children}</IntlProvider>
+  <IntlProvider locale="en">
+    <MemoryRouter>{children}</MemoryRouter>
+  </IntlProvider>
 );
 
 describe('ContractsWidget', () => {
