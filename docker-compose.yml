@@ -1,0 +1,31 @@
+services:
+  auth-service:
+    image: node:22-alpine
+    container_name: auth-service
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - PORT=${PORT:-3000}
+      - JWT_SECRET=${JWT_SECRET}
+    command: sh -c "corepack enable && pnpm install && pnpm exec nx start @onboarding-course/auth-service"
+    ports:
+      - "${PORT:-3000}:${PORT:-3000}"
+
+  formal-blue:
+    build:
+      context: .
+      dockerfile: apps/customer/formal-blue/Dockerfile
+    container_name: formal-blue
+    ports:
+      - "4200:80"
+
+  mad-purple:
+    build:
+      context: .
+      dockerfile: apps/customer/mad-purple/Dockerfile
+    container_name: mad-purple
+    ports:
+      - "4201:80"

@@ -9,7 +9,7 @@ export class AuthHttpRepository implements AuthRepository {
     constructor(protected baseUrl: string = AuthHttpRepository.getApiUrl()) {}
 
     static getApiUrl() {
-        return import.meta.env.VITE_API_URL;
+        return import.meta.env.AUTH_SERVICE_URL;
     }
 
     async login(credentials: LoginDto): Promise<User> {
