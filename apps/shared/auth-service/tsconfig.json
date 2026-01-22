@@ -1,0 +1,17 @@
+{
+    "extends": "../../../tsconfig.base.json",
+    "compilerOptions": {
+        "outDir": "dist",
+        "module": "esnext",
+        "target": "es2022",
+        "moduleResolution": "bundler",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "strict": true,
+        "sourceMap": true,
+        "declaration": true,
+        "emitDeclarationOnly": false,
+        "types": ["node"]
+    },
+    "include": ["src/**/*.ts"]
+}

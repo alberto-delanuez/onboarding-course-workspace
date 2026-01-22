@@ -16,7 +16,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 const appConfig = new CustomerAppBuilder()
   .withTitle('Formal Blue')
-  .withApiUrl('https://dummyjson.com')
+  .withApiUrl('http://localhost:3000')
   .withDefaultLocale('en')
   .withSocialLogin()
   .withAuthModule()

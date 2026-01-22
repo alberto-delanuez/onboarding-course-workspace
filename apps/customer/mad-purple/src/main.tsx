@@ -15,7 +15,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 const appConfig = new CustomerAppBuilder()
   .withTitle('Mad Purple')
-  .withApiUrl('https://dummyjson.com')
+  .withApiUrl('http://localhost:3000')
   .withDefaultLocale('es')
   .disableLogin()
   .withOTP()
