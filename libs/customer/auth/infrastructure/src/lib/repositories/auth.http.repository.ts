@@ -6,96 +6,130 @@ import {
 } from '@onboarding-course/customer-auth-domain';
 
 export class AuthHttpRepository implements AuthRepository {
-    constructor(protected baseUrl: string = AuthHttpRepository.getApiUrl()) {}
-
-    static getApiUrl() {
-        return import.meta.env.AUTH_SERVICE_URL;
-    }
-
+    constructor(protected authClient: any) {}
     async login(credentials: LoginDto): Promise<User> {
-        const response = await fetch(`${this.baseUrl}/auth/login`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                email: credentials.email,
-                password: credentials.password
-            })
+        const { data, error } = await this.authClient.signIn.email({
+            email: credentials.email,
+            password: credentials.password
         });
 
-        if (!response.ok) {
-            throw new Error('Login failed');
+        if (error) {
+            throw new Error(error.message || 'Login failed');
         }
 
-        return response.json() as Promise<User>;
+        if (!data || !data.user) {
+            throw new Error('Login failed: No user data returned');
+        }
+
+        return {
+            id: data.user.id,
+            email: data.user.email,
+            name: data.user.name ?? '',
+            accessToken: typeof data.token === 'string' ? data.token : '',
+            refreshToken: '' // Session managed by cookie/SDK
+        };
     }
 
     async register(data: RegisterDto): Promise<User> {
-        const response = await fetch(`${this.baseUrl}/auth/register`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
+        const { data: result, error } = await this.authClient.signUp.email({
+            email: data.email,
+            password: data.password,
+            name: data.name
         });
 
-        if (!response.ok) {
-            throw new Error('Register failed');
+        if (error) {
+            throw new Error(error.message || 'Register failed');
         }
 
-        // DummyJSON returns the created user object
-        return response.json() as Promise<User>;
+        if (!result || !result.user) {
+            throw new Error('Register failed: No user data returned');
+        }
+
+        return {
+            id: result.user.id,
+            email: result.user.email,
+            name: result.user.name ?? '',
+            accessToken: typeof result.token === 'string' ? result.token : '',
+            refreshToken: ''
+        };
     }
 
-    async verify(token: string): Promise<User> {
-        const response = await fetch(`${this.baseUrl}/auth/me`, {
-            method: 'GET',
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        });
+    async verify(): Promise<User> {
+        // Neon Auth SDK manages session, but if we need manual verification:
+        const { data, error } = await this.authClient.getSession();
 
-        if (!response.ok) {
+        if (error || !data) {
             throw new Error('Token verification failed');
         }
+        console.log('data', data);
 
-        return response.json() as Promise<User>;
+        return {
+            id: data.user.id,
+            email: data.user.email,
+            name: data.user.name,
+            accessToken:
+                typeof data.session?.token === 'string'
+                    ? data.session.token
+                    : '',
+            refreshToken: ''
+        };
     }
 
-    async socialLogin(provider: string, token: string): Promise<User> {
-        // Simulate a successful login for demo purposes
-        return {
-            id: '1',
-            email: 'social@example.com',
-            name: `${provider} User`,
-            // HACK: DummyJSON token from user to access profile
-            accessToken:
-                'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlcm5hbWUiOiJvbGl2aWF3IiwiZW1haWwiOiJvbGl2aWEud2lsc29uQHguZHVtbXlqc29uLmNvbSIsImZpcnN0TmFtZSI6Ik9saXZpYSIsImxhc3ROYW1lIjoiV2lsc29uIiwiZ2VuZGVyIjoiZmVtYWxlIiwiaW1hZ2UiOiJodHRwczovL2R1bW15anNvbi5jb20vaWNvbi9vbGl2aWF3LzEyOCIsImlhdCI6MTc2ODMwMjk0NSwiZXhwIjoxNzY4MzA2NTQ1fQ.8rqLdKxGkosVJOTIUTNxbY0GEmd8rb711YBZy6DYYT0',
-            refreshToken: 'mock_social_refresh_token'
-        };
+    async socialLogin(provider: string): Promise<void> {
+        const { error } = await this.authClient.signIn.social({
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            provider: provider as any,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            callbackURL: '/auth/callback'
+        });
+
+        if (error) {
+            throw new Error(error.message || 'Social login failed');
+        }
     }
 
     async requestOtp(email: string): Promise<void> {
-        // In a real app, this would call an API endpoint like POST /auth/otp/request
-        return Promise.resolve();
+        // Try to find the correct method for sending OTP.
+        // In Better Auth, it might be separate. Assuming a standard pattern or accessing via any if types are incomplete.
+        // If signIn.emailOtp requires otp, we can't use it for request.
+        // We will try to use the generic 'signIn' with type if available or assume 'emailOtp' plugin structure.
+
+        // Fallback: Using 'any' to bypass strict type check if we believe the method supports overload,
+        // OR using a more likely method name if it exists in the client.
+
+        // Actually, for email OTP, often it is:
+        const { error } =
+            await // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            this.authClient.emailOtp.sendVerificationOtp({
+                email,
+                type: 'sign-in'
+            });
+
+        if (error) {
+            throw new Error(error.message || 'OTP request failed');
+        }
     }
 
     async loginWithOtp(email: string, code: string): Promise<User> {
-        if (code !== '123456') {
-            throw new Error('Invalid OTP code');
+        const { data, error } = await this.authClient.signIn.emailOtp({
+            email,
+            otp: code
+        });
+
+        if (error) {
+            throw new Error(error.message || 'OTP verification failed');
+        }
+
+        if (!data || !data.user) {
+            throw new Error('OTP login failed: No user data returned');
         }
 
         return {
-            id: '2',
-            email: email,
-            name: 'OTP User',
-            // HACK: DummyJSON token from user to access profile
-            accessToken:
-                'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlcm5hbWUiOiJvbGl2aWF3IiwiZW1haWwiOiJvbGl2aWEud2lsc29uQHguZHVtbXlqc29uLmNvbSIsImZpcnN0TmFtZSI6Ik9saXZpYSIsImxhc3ROYW1lIjoiV2lsc29uIiwiZ2VuZGVyIjoiZmVtYWxlIiwiaW1hZ2UiOiJodHRwczovL2R1bW15anNvbi5jb20vaWNvbi9vbGl2aWF3LzEyOCIsImlhdCI6MTc2ODMwMjk0NSwiZXhwIjoxNzY4MzA2NTQ1fQ.8rqLdKxGkosVJOTIUTNxbY0GEmd8rb711YBZy6DYYT0',
-            refreshToken: 'mock_otp_refresh_token'
+            id: data.user.id,
+            email: data.user.email,
+            name: data.user.name ?? '',
+            accessToken: typeof data.token === 'string' ? data.token : '',
+            refreshToken: ''
         };
     }
 }
-
-// Removed DummyJSON-specific username parsing

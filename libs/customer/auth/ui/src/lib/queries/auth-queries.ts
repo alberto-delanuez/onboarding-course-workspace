@@ -4,12 +4,12 @@ import { VerifyUseCaseToken } from '@onboarding-course/customer-auth-application
 import { queryKeys } from './query-keys';
 
 export const authQueries = {
-    verify: (token: string) =>
+    verify: () =>
         queryOptions({
             queryKey: queryKeys.authVerify,
             queryFn: () => {
                 const verifyUseCase = DIContainer.get(VerifyUseCaseToken);
-                return verifyUseCase.execute(token);
+                return verifyUseCase.execute();
             }
         })
 };

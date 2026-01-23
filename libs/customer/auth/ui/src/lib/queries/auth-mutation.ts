@@ -25,7 +25,7 @@ export const authMutation = {
                 const socialLoginUseCase = DIContainer.get(
                     SocialLoginUseCaseToken
                 );
-                return socialLoginUseCase.execute(provider, 'mock_token');
+                return socialLoginUseCase.execute(provider);
             }
         }),
     requestOtp: () =>

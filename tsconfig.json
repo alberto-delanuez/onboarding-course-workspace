@@ -50,6 +50,9 @@
         },
         {
             "path": "./libs/customer/common/utils"
+        },
+        {
+            "path": "./apps/shared/auth-service"
         }
     ]
 }

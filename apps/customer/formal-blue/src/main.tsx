@@ -3,10 +3,10 @@ import * as ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { blueTheme } from '@onboarding-course/customer-themes-blue';
-import { LoginContainer, ProtectedRoute, RegisterContainer } from '@onboarding-course/customer-auth-ui';
+import { LoginContainer, ProtectedRoute, RegisterContainer, AuthCallback } from '@onboarding-course/customer-auth-ui';
 import { BaseLayout, ErrorBoundary, ContractDetails } from '@onboarding-course/customer-common-ui';
 import Dashboard from './app/dashboard';
-import { IntlProvider  } from 'react-intl';
+import { IntlProvider } from 'react-intl';
 import messages from './i18n/translations.json';
 import Profile from './app/profile';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -50,25 +50,26 @@ const App = () => {
         <CssBaseline />
         <ErrorBoundary>
           <QueryClientProvider client={queryClient}>
-          <BrowserRouter>
-            <Routes>
-              <Route path="/login" element={<LoginContainer login={appConfig.login} socialLogin={appConfig.socialLogin} otp={appConfig.otp} />} />
-              <Route path="/register" element={<RegisterContainer />} />
-              
-              <Route element={<ProtectedRoute />}>
-                <Route element={<BaseLayout title={appConfig.title} currentLocale={locale} onLocaleChange={handleLocaleChange} />}>
-                  <Route path="/dashboard" element={<Dashboard />} />
-                  <Route path="/profile" element={<Profile />} />
-                  <Route path="/contracts/:id" element={<ContractDetails />} />
-                </Route>
-              </Route>
+            <BrowserRouter>
+              <Routes>
+                <Route path="/auth/callback" element={<AuthCallback />} />
+                <Route path="/login" element={<LoginContainer login={appConfig.login} socialLogin={appConfig.socialLogin} otp={appConfig.otp} />} />
+                <Route path="/register" element={<RegisterContainer />} />
 
-              <Route path="/" element={<Navigate to="/dashboard" replace />} />
-              <Route path="*" element={<Navigate to="/login" replace />} />
-            </Routes>
-          </BrowserRouter>
-          <ReactQueryDevtools initialIsOpen={false} />
-          </QueryClientProvider>  
+                <Route element={<ProtectedRoute />}>
+                  <Route element={<BaseLayout title={appConfig.title} currentLocale={locale} onLocaleChange={handleLocaleChange} />}>
+                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/contracts/:id" element={<ContractDetails />} />
+                  </Route>
+                </Route>
+
+                <Route path="/" element={<Navigate to="/dashboard" replace />} />
+                <Route path="*" element={<Navigate to="/login" replace />} />
+              </Routes>
+            </BrowserRouter>
+            <ReactQueryDevtools initialIsOpen={false} />
+          </QueryClientProvider>
         </ErrorBoundary>
       </ThemeProvider>
     </IntlProvider>

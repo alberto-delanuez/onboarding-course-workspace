@@ -29,7 +29,7 @@ export const LoginContainer: React.FC<LoginContainerProps> = ({ login = { enable
     email: '',
     code: '',
     error: null,
-}), [login, otp]);
+  }), [login, otp]);
 
   const [state, dispatch] = useLoginReducer(
     initialState
@@ -38,38 +38,33 @@ export const LoginContainer: React.FC<LoginContainerProps> = ({ login = { enable
   const { mode, email, code, error } = state;
 
   const handleSuccess = (token: string) => {
-    window.localStorage.setItem('token', token);    
+    window.localStorage.setItem('token', token);
     navigate('/dashboard');
   };
 
   const loginAsync = useLoginMutation({
-        onSuccess: ({accessToken}) => handleSuccess(accessToken),
-        onError: () => {
-          dispatch({ type: 'SET_ERROR', payload: 'Invalid credentials or login failed' });
-        }
+    onSuccess: ({ accessToken }) => handleSuccess(accessToken),
+    onError: () => {
+      dispatch({ type: 'SET_ERROR', payload: 'Invalid credentials or login failed' });
+    }
   });
 
-  const socialLoginAsync = useSocialLoginMutation({
-        onSuccess: ({accessToken}) => handleSuccess(accessToken),
-        onError: () => {
-          dispatch({ type: 'SET_ERROR', payload: 'Social login failed' });
-        }
-  });
+  const socialLoginAsync = useSocialLoginMutation();
 
   const requestOtpAsync = useRequestOtpMutation({
-        onSuccess: () => {
-            dispatch({ type: 'OTP_SENT_SUCCESS' });
-        },
-        onError: () => {
-            dispatch({ type: 'SET_ERROR', payload: 'Failed to send OTP code' });
-        }
+    onSuccess: () => {
+      dispatch({ type: 'OTP_SENT_SUCCESS' });
+    },
+    onError: () => {
+      dispatch({ type: 'SET_ERROR', payload: 'Failed to send OTP code' });
+    }
   });
 
   const loginWithOtpAsync = useLoginWithOtpMutation({
-        onSuccess: ({accessToken}) => handleSuccess(accessToken),
-        onError: () => {
-            dispatch({ type: 'SET_ERROR', payload: 'Invalid OTP code' });
-        }
+    onSuccess: ({ accessToken }) => handleSuccess(accessToken),
+    onError: () => {
+      dispatch({ type: 'SET_ERROR', payload: 'Invalid OTP code' });
+    }
   });
 
   const handleLogin = async (credentials: LoginDto) => {
@@ -77,7 +72,7 @@ export const LoginContainer: React.FC<LoginContainerProps> = ({ login = { enable
       dispatch({ type: 'CLEAR_ERROR' });
 
       await loginAsync(credentials);
-     
+
     } catch (err) {
       dispatch({ type: 'SET_ERROR', payload: 'Invalid credentials or login failed' });
     }
@@ -130,12 +125,12 @@ export const LoginContainer: React.FC<LoginContainerProps> = ({ login = { enable
       {mode === 'PASSWORD' && login.enabled && (
         <>
           <LoginForm onSubmit={handleLogin} />
-          
+
           {otp.enabled && (
-            <Button 
-              fullWidth 
-              variant="text" 
-              sx={{ mt: 2 }} 
+            <Button
+              fullWidth
+              variant="text"
+              sx={{ mt: 2 }}
               onClick={() => dispatch({ type: 'SWITCH_TO_OTP' })}
             >
               {intl.formatMessage({ id: 'customer.login.with.otp', defaultMessage: 'Login with OTP' })}
@@ -164,14 +159,14 @@ export const LoginContainer: React.FC<LoginContainerProps> = ({ login = { enable
         <Box>
           <Typography variant="h5" gutterBottom>Login with OTP</Typography>
           <Stack spacing={2}>
-            <TextField 
-              label="Email" 
-              value={email} 
-              onChange={(e) => dispatch({ type: 'SET_EMAIL', payload: e.target.value })} 
+            <TextField
+              label="Email"
+              value={email}
+              onChange={(e) => dispatch({ type: 'SET_EMAIL', payload: e.target.value })}
               fullWidth
             />
             <Button variant="contained" onClick={handleRequestOtp} fullWidth>Send Code</Button>
-            
+
             {login.enabled && (
               <Button variant="text" onClick={() => dispatch({ type: 'SWITCH_TO_PASSWORD' })}>
                 Back to Password Login
@@ -186,10 +181,10 @@ export const LoginContainer: React.FC<LoginContainerProps> = ({ login = { enable
           <Typography variant="h5" gutterBottom>Verify OTP</Typography>
           <Stack spacing={2}>
             <Typography variant="body2">Code sent to {email}</Typography>
-            <TextField 
-              label="OTP Code" 
+            <TextField
+              label="OTP Code"
               value={code}
-              onChange={(e) => dispatch({ type: 'SET_CODE', payload: e.target.value })} 
+              onChange={(e) => dispatch({ type: 'SET_CODE', payload: e.target.value })}
               fullWidth
             />
             <Button variant="contained" onClick={handleVerifyOtp} fullWidth>Verify & Login</Button>
